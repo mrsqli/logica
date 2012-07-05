@@ -1,0 +1,22 @@
+<?php
+/**
+ * View for the login action
+ *
+ * @category backoffice
+ * @package backoffice_views
+ * @subpackage backoffice_views_profile
+ * @copyright company
+ */
+?>
+<div id="login">
+    <h2>Log in</h2>
+    <div id="inner-login">
+        <?php if (isset($this->error)):?>
+            <div class="msg msg-error">
+                <p><?php echo '<strong>Upppps!</strong><br />Invalid username or password';?></p>
+            </div>
+        <?php endif;?>
+        <?php echo $this->form;?>
+    </div>
+</div>
+

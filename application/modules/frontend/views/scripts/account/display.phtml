@@ -1,0 +1,70 @@
+<a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'edit'), 'default', true); ?>" class="active"><?=$this->t('Edit your Account')?></a>
+<br/><br/>
+<table width="90%" cellpadding="0" cellspacing="1" class="texte">
+    <tr>
+        <td width="50%" align="right">
+            <strong><?= $this->t('Nom') ?>:</strong> 
+        </td>
+        <td>
+            <font color=blue>  <?= $this->item['last_name']; ?> </font>
+        </td>
+
+    </tr>
+    <tr>
+        <td width="50%" align="right">
+            <strong><?= $this->t('prenom') ?>:</strong> 
+        </td>
+        <td>
+            <font color=blue>  <?= $this->item['first_name']; ?> </font>
+        </td>
+
+    </tr>
+    <tr>
+        <td width="50%" align="right">
+            <strong><?= $this->t('Email') ?>:</strong> 
+        </td>
+        <td>
+            <font color=blue>  <?= $this->item['email']; ?> </font>
+        </td>
+    </tr>
+    <tr>
+        <td width="50%" align="right">
+            <strong><?= $this->t('Birthdate') ?>:</strong> 
+        </td>
+        <td>
+            <font color=blue>  <?= $this->item['birthdate']; ?> </font>
+        </td>
+    </tr>
+    <tr>
+        <td width="50%" align="right">
+            <strong><?= $this->t('Ville') ?>:</strong> 
+        </td>
+        <td>
+            <font color=blue>  <?= $this->item['name']; ?> </font>
+        </td>
+
+    </tr>
+    <tr>
+        <td width="50%" align="right">
+            <strong><?= $this->t('Telephone') ?>:</strong> 
+        </td>
+        <td>
+            <font color=blue>  <?= $this->item['phone_number']; ?> </font>
+        </td>
+    </tr>
+
+    <tr>
+        <td width="50%" align="right">
+            <hr/>
+            <strong><?= $this->t('Description') ?>:</strong> 
+        </td>
+        <td>
+            <hr/>
+            <font color=red>  <?= $this->item['profil_description']; ?> </font>
+        </td>
+    </tr>
+</table>
+
+
+
+<a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'changepw'), 'default', true); ?>" class="active"><?= $this->t('change your password') ?></a>

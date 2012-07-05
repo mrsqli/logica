@@ -1,0 +1,33 @@
+<script>
+
+    $(document).ready(function() {                          
+        catchEvents();
+    });
+
+</script>
+<div class="update" id="comments_num<?= $this->comment[comment_id] ?>" style="background-color:#e9edee;">
+
+    <table>
+
+        <thead> 
+        <td  width="5%">
+            <img height="35px" src="<?= $this->baseUrl() . '/images/Profil/' . $this->comment[image_url] ?>"></td>
+
+        <td  width="20%">
+            <FONT color="#0000DD" size=1 >
+            <a href="#" ><?= $this->comment[first_name] . '  ' . $this->comment[last_name] ?> </a></font>
+            <FONT color="green" size=1 >
+            <?= date('d/m/Y H:i:s', $this->comment[time_create]); ?> </font>
+        </td>
+        <td  width="20%">    
+            <span style="float: right"> 
+                <a  id="<?= $this->comment[comment_id] ?>" class="delete_comment" href ="#">
+                    <img  style="height: 16px;" src="<?= $this->baseUrl() . '/images/delete.png' ?>" alt="Default_thumb"/>
+                </a>
+            </span>
+        </td>
+        </thead> 
+    </table>
+    <hr>
+    <?= $this->comment[body] ?>
+</div>

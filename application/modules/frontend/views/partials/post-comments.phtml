@@ -1,0 +1,29 @@
+
+<div <?php if (!$this->show): ?> style="display: none;" <?php endif; ?> class="update comment_block" id="comments_num<?= $this->comment->comment_id ?>" style="background-color:#e9edee;">
+
+    <table>
+
+        <thead> 
+        <td  width="5%" >
+            <img height="35px" src="<?= $this->baseUrl() . '/images/Profil/' . $this->member->image_url ?>" alt="Default_thumb"></td>
+
+        <td  width="20%">
+            <FONT color="#0000DD" size=1 >
+            <a href="#" ><?= $this->member->first_name . '  ' . $this->member->last_name ?> </a></font>
+            <FONT color="green" size=1 >
+            <?= date('d/m/Y H:i:s', $this->comment->time_create); ?> </font>
+        </td>
+        <?php if ($this->member->member_id == App_Utilities::getIdMember()) : ?>
+            <td  width="20%">   
+                <span style="float: right"> 
+                    <a  id="<?= $this->comment->comment_id ?>" class="delete_comment" href ="#">
+                        <img style="height: 16px;" src="<?= $this->baseUrl() . '/images/delete.png' ?>" />
+                    </a>
+                </span>
+            </td>
+        <?php endif; ?>
+        </thead> 
+    </table>
+    <hr>
+    <?= $this->comment->body ?>
+</div>

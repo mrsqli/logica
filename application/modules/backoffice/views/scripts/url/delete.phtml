@@ -1,0 +1,34 @@
+<?php
+/**
+ * Delete a privilege
+ *
+ * @category backoffice
+ * @package backoffice_views
+ * @subpackage backoffice_views_privileges
+ * @copyright company
+ */
+
+$config = array();
+$config['pageTitle'] = 'Delete URL';
+$config['areYouSureMessage'] = 'Are you sure you want to delete the url?';
+
+// column names & indexes
+$config['columnNames'] = array(
+    'Source',
+    'Alias',
+    'Parametre',
+);
+$config['columnIndexes'] = array(
+    'source',
+    'alias',
+    'params'
+);
+
+echo $this->partial(
+    'partials/default-delete.phtml',
+    array(
+        'form' => $this->form,
+        'config' => $config,
+        'item' => $this->item
+    )
+);

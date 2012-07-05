@@ -1,0 +1,42 @@
+<?php
+/**
+ * Holds the default paginator view
+ *
+ *
+ * @category backoffice
+ * @package backoffice_paginators
+ * @copyright company
+ */
+?>
+<?php if ($this->pageCount): ?>
+    <ul class="pagination">
+        <li>
+        <!-- Previous page link -->
+        <?php if (isset($this->previous)): ?>
+            <a class="text" href="<?php echo $this->url(array('page' => $this->previous)); ?>"> ← Previous</a>
+        <?php /* else: ?>
+            <span class="disabled"> ← Previous</span>
+        <?php */ endif; ?>
+        </li>
+        
+        <!-- Numbered page links -->
+        <?php foreach ($this->pagesInRange as $page): ?>
+            <li>
+            <?php if ($page != $this->current): ?>
+                <a href="<?php echo $this->url(array('page' => $page)); ?>"><?php echo $page; ?></a>
+            <?php else: ?>
+                <span class="current"><?php echo $page; ?></span>
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+        
+        <!-- Next page link -->
+        <li>
+        <?php if (isset($this->next)): ?>
+            <a class="text" href="<?php echo $this->url(array('page' => $this->next)); ?>">Next →</a>
+        <?php /* else: ?>
+            <span class="disabled">Next →</span>
+        <?php */ endif; ?>
+    </li>
+    </ul>
+<?php endif; ?>

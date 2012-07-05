@@ -1,0 +1,172 @@
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/wall/func.inc.js"></script>
+<script>
+    
+    /**
+     * Add a comment to Wall post
+     */
+    function addCommentToPost(postId, comment){
+        
+  
+ 
+        if(comment == '') return;        
+
+        $.ajax({
+            type: "POST",
+            url: "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'addcomment'), 'default', true); ?>",
+            async: true,
+            cache: false,
+            timeout: 30000,
+            data: "comment="+comment+"&post="+postId,
+     
+            success: function(resp){
+                if(resp){
+                    
+                    $("#diplaycomment"+postId).toggle();
+                    $(resp).insertBefore("#wall_comment_"+postId);             
+                    $('#text_'+postId).val('');                    
+                }
+            },
+            error: function(resp){
+                alert('une erreur s\'est produite');
+            }
+        });
+    }
+    
+    /**
+     * Comment
+     */
+    var _filter='all';
+    function filterPosts(filter) {
+        
+        window._filter=filter;
+        
+        $('#radar_events').html("<b id='img_wait'>Chargement en cours...</b>");
+        $.ajax({
+            type: "POST",
+            url: "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'index'), 'default', true); ?>",
+            async: true,
+            cache: false,
+            timeout: 30000,
+            data: "notify=0&isAjax=1&filter="+filter,
+            success: function(resp){
+                if(resp){
+                    $('#img_wait').remove();                  
+                    $('#radar_events').html(resp);
+                }
+            },
+            error: function(resp){
+                alert('une erreur s\'est produite');
+            }
+        });
+    }
+    
+    /**
+     * notify
+     */
+    function notifyPost() {
+        //$('#notify').html("<b id='img_wait'>Chargement en cours...</b>");
+        $.ajax({
+            type: "POST",
+            url: "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'index'), 'default', true); ?>",
+            async: true,
+            cache: false,
+            timeout: 30000,
+            data: "notify=1&filter="+window._filter,
+            success: function(resp){
+                if(resp){
+                   $('#notify').html(resp);
+                }
+            },
+            error: function(resp){
+                alert('une erreur s\'est produite');
+            }
+        });
+    }
+    function deleteComment(Id) {
+
+       $.ajax({
+            type: "POST",
+            url: "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'deletecomment'), 'default', true); ?>",
+            async: true,
+            cache: false,
+            timeout: 30000,
+            data: "id="+Id,
+            success: function(resp){
+                if(resp){
+                    $('#comments_num'+Id).remove();
+                }
+            },
+            error: function(resp){
+                alert('une erreur s\'est produite');
+            }
+        });
+    }
+    /**
+     * Page loaded
+     */     
+    $(document).ready(function() {                          
+        catchEvents();
+    });
+       
+    /**
+     * de
+     */
+    
+    
+       
+</script>
+
+
+
+<br/><br/><br/><br/>
+<div class="update">
+    <form id="wall" method="post" action="<?= $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'addpost'), 'default', true); ?>">
+        <input id="wall_key"  type="hidden">
+        <textarea cols="40" id="wall_comment" name="wall_comment" rows="20"></textarea>
+        <input id="wall_submit" name="commit" value="Post" type="submit">
+        <p class="notice">
+            <strong>
+                Note:
+            </strong>
+          Tapez un « # » devant les mots.
+        </p>
+    </form>   
+</div>
+
+<div class="update" class="">
+    <b>Filter posts : </b>
+    <span style="float: right">      
+        <a id="all" class="filter <?php if (!isset($this->currFilter) || is_null($this->currFilter) || $this->currFilter == 'all'): ?> bold <?php endif; ?>" href="#" ><?=$this->t('All network')?></a> 
+        | <a class="filter <?php if ($this->currFilter == 'co'): ?> bold <?php endif; ?>" id="co" href="#" ><?=$this->t('My contacts only')?></a>
+        | <a class="filter <?php if ($this->currFilter == 'mywall'): ?> bold <?php endif; ?>" id="mywall" href="#" ><?=$this->t('My Wall')?></a>
+    </span>
+</div>
+
+<div id="notify" >
+    <?= $this->addPost; ?>
+</div>
+
+<article class="content" id="radar_events">
+    <section id="blank_radar">
+
+        <?php if (is_null($this->currFilter) OR $this->currFilter == 'all') : ?>
+            <h2><?=$this->t('all posts')?></h2> 
+        <?php elseif ($this->currFilter == 'co'): ?>
+            <h2><?=$this->t('contacts only')?></h2>
+        <?php else : ?>
+            <h2><?=$this->t('My wall')?></h2>
+        <?php endif; ?>
+
+        <ul id="test">
+            <?php
+            foreach ($this->allContactWallPost as $wall):
+                $member = new Member();
+                $member = $member->getMember($wall[member_to_id]);
+                ?>
+                <?= $this->partial('partials/wall-post.phtml', array('wall' => $wall, 'member' => $member)) ?>
+
+            <?php endforeach; ?>
+        </ul>
+    </section>
+
+</article>

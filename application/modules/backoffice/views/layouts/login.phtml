@@ -1,0 +1,66 @@
+<?php
+/**
+ * Layout used to display error pages
+ *
+ * @category backoffice
+ * @package backoffice_layouts
+ * @copyright company
+ */
+
+// configure the title
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('company');
+
+// add generic scripts
+$this->headScript()->appendFile($this->baseUrl() . '/js/jquery.min.js');
+
+// add generic CSS files
+$this->headLink()->appendStylesheet($this->baseUrl() . '/css/gridsystem.css');
+$this->headLink()->appendStylesheet($this->baseUrl() . '/css/backoffice.css');
+
+//Add the ZFDebug Toolbar only if enabled in app.ini
+if(App_DI_Container::get('ConfigObject')->zfdebug->enabled){
+    $this->headScript()->appendFile($this->baseUrl() . '/js/zfdebug.js');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/zfdebug.css');
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+    <head> 
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+        <meta http-equiv="content-style-type" content="text/css" /> 
+        <meta http-equiv="content-script-type" content="text/javascript" /> 
+        
+        <link rel="shortcut icon" type="image/ico" href="<?php echo $this->baseUrl();?>/images/favicon.png" />
+        
+        <?php echo $this->headTitle() . PHP_EOL;?>
+        <?php echo $this->headScript() . PHP_EOL;?>
+        <?php echo $this->headLink() . PHP_EOL;?>
+        
+        <!--[if !IE 7]>
+            <style type="text/css">
+                div.wrapper {display:table;height:100%}
+            </style>
+        <![endif]-->
+        
+        <script type="text/javascript" charset="utf-8"> 
+            //Set focus on username field
+            $(document).ready(function() {
+                $('input#username').focus();
+            });
+        </script> 
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="header" class="container_12">
+                <a id="logo" title="Company BackOffice" class="grid_1">ForNet <span>BackOffice</span></a>
+            </div>
+            <div id="container" class="container_12 clearfix">
+                <?php echo $this->layout()->content;?>
+            </div>
+        </div>
+        <div id="footer">
+            © Company BackOffice — 2010
+        </div>
+    </body>
+</html>

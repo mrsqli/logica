@@ -1,0 +1,561 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: snb v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-03 13:13-0000\n"
+"PO-Revision-Date: 2012-07-03 13:13-0000\n"
+"Last-Translator: sohaib <s.elguennuni@gmail.com>\n"
+"Language-Team: sohaib <s.elguennuni@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;t\n"
+"X-Poedit-Basepath: C:\\wamp\\www\\snb\\\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SearchPath-0: application\\modules\n"
+
+#: application\modules/backoffice/forms/UrlRewritingForm.php:139
+msgid "Save"
+msgstr "Enregistrer"
+
+#: application\modules/frontend/controllers/ErrorController.php:37
+msgid "404 Page not found!"
+msgstr "Erreur 404; Page n'exsiste pas"
+
+#: application\modules/frontend/controllers/ErrorController.php:38
+msgid "The page you requested was not found."
+msgstr ""
+
+#: application\modules/frontend/controllers/ErrorController.php:43
+msgid "Error!"
+msgstr ""
+
+#: application\modules/frontend/controllers/ErrorController.php:44
+msgid "An unexpected error occurred with your request. Please try again later."
+msgstr ""
+
+#: application\modules/frontend/controllers/ErrorController.php:66
+msgid "Flag and Flipper not found"
+msgstr ""
+
+#: application\modules/frontend/forms/ChangePasswordForm.php:57
+msgid "Old password"
+msgstr "Ancien mot de passe"
+
+#: application\modules/frontend/forms/ChangePasswordForm.php:74
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: application\modules/frontend/forms/ChangePasswordForm.php:97
+msgid "Retype new password"
+msgstr "Retaper le nouveau mot de passe"
+
+#: application\modules/frontend/forms/ChangePasswordForm.php:114
+msgid "Save password"
+msgstr "Enregistrer le mot de passe"
+
+#: application\modules/frontend/forms/CompanyForm.php:29
+#, fuzzy
+msgid "Raison social"
+msgstr "Raison sociale"
+
+#: application\modules/frontend/forms/CompanyForm.php:46
+msgid "synopsis"
+msgstr ""
+
+#: application\modules/frontend/forms/CompanyForm.php:70
+msgid "rc"
+msgstr ""
+
+#: application\modules/frontend/forms/CompanyForm.php:85
+msgid "patente"
+msgstr ""
+
+#: application\modules/frontend/forms/CompanyForm.php:100
+#, fuzzy
+msgid "create_date"
+msgstr "Date de fin"
+
+#: application\modules/frontend/forms/CompanyForm.php:115
+msgid "tel"
+msgstr ""
+
+#: application\modules/frontend/forms/CompanyForm.php:130
+msgid "fax"
+msgstr ""
+
+#: application\modules/frontend/forms/CompanyForm.php:145
+#, fuzzy
+msgid "adress"
+msgstr "Email"
+
+#: application\modules/frontend/forms/CompanyForm.php:160
+#: application\modules/frontend/forms/ProfilDescription.php:44
+msgid "description"
+msgstr "Description"
+
+#: application\modules/frontend/forms/ExperienceForm.php:34
+#: application\modules/frontend/forms/StudyForm.php:34
+msgid "Start date"
+msgstr "Date de début"
+
+#: application\modules/frontend/forms/ExperienceForm.php:50
+#: application\modules/frontend/forms/StudyForm.php:50
+msgid "End Date"
+msgstr "Date de fin"
+
+#: application\modules/frontend/forms/ExperienceForm.php:69
+msgid "Company"
+msgstr "Entreprise"
+
+#: application\modules/frontend/forms/ExperienceForm.php:86
+msgid "function"
+msgstr "Fonction"
+
+#: application\modules/frontend/forms/ExperienceForm.php:102
+msgid "mission"
+msgstr "Mission"
+
+#: application\modules/frontend/forms/ExperienceForm.php:118
+#: application\modules/frontend/forms/ProfileForm.php:116
+msgid "city"
+msgstr "Ville"
+
+#: application\modules/frontend/forms/LoginForm.php:41
+msgid "Username"
+msgstr "Login"
+
+#: application\modules/frontend/forms/LoginForm.php:57
+#: application\modules/frontend/forms/UserAddForm.php:31
+msgid "Password"
+msgstr "Mot de passe"
+
+#: application\modules/frontend/forms/LoginForm.php:73
+msgid "no humain"
+msgstr "Merci de confirmer que vous êtes humain"
+
+#: application\modules/frontend/forms/LoginForm.php:92
+msgid "Log In"
+msgstr "Connexion"
+
+#: application\modules/frontend/forms/LoginForm.php:106
+msgid "Sign Up"
+msgstr "Inscription"
+
+#: application\modules/frontend/forms/ProfileForm.php:52
+#: application\modules/frontend/forms/SponsorForm.php:36
+msgid "First name"
+msgstr "Prénom"
+
+#: application\modules/frontend/forms/ProfileForm.php:68
+#: application\modules/frontend/forms/SponsorForm.php:52
+msgid "Last name"
+msgstr "Nom"
+
+#: application\modules/frontend/forms/ProfileForm.php:83
+msgid "Email address"
+msgstr "Email"
+
+#: application\modules/frontend/forms/ProfileForm.php:100
+msgid "birthdate"
+msgstr "Date de naissance"
+
+#: application\modules/frontend/forms/ProfileForm.php:132
+msgid "Phone number"
+msgstr "Téléphone"
+
+#: application\modules/frontend/forms/ProfileForm.php:148
+msgid "Save profile"
+msgstr "Enregistrer"
+
+#: application\modules/frontend/forms/SkillsForm.php:36
+msgid "Skills"
+msgstr "Compétences"
+
+#: application\modules/frontend/forms/SponsorForm.php:68
+#, fuzzy
+msgid "email"
+msgstr "Email"
+
+#: application\modules/frontend/forms/SponsorForm.php:84
+msgid "Envoyer mon invitation"
+msgstr ""
+
+#: application\modules/frontend/forms/StudyForm.php:65
+msgid "School Name"
+msgstr "Nom de l'école"
+
+#: application\modules/frontend/forms/StudyForm.php:80
+msgid "domain"
+msgstr "Domaine"
+
+#: application\modules/frontend/forms/StudyForm.php:95
+msgid "Degree"
+msgstr "Degré"
+
+#: application\modules/frontend/forms/StudyForm.php:111
+msgid "Result"
+msgstr "Résultat"
+
+#: application\modules/frontend/forms/StudyForm.php:127
+msgid "Activity"
+msgstr "Activité"
+
+#: application\modules/frontend/forms/StudyForm.php:143
+msgid "Additional Information"
+msgstr "Information additionnelle"
+
+#: application\modules/frontend/forms/UserAddForm.php:47
+msgid "Retype password"
+msgstr "Retaper le mot de passe"
+
+#: application\modules/frontend/forms/UserForm.php:66
+#: application\modules/frontend/forms/UserProspectForm.php:91
+msgid "Email"
+msgstr "Email"
+
+#: application\modules/frontend/forms/UserForm.php:161
+#: application\modules/frontend/forms/UserProspectForm.php:147
+msgid "Save user"
+msgstr "Enregistrer Utilisateur"
+
+#: application\modules/frontend/forms/UserProspectForm.php:109
+msgid "Raison sociale"
+msgstr "Raison sociale"
+
+#: application\modules/frontend/forms/UserProspectForm.php:127
+msgid "Status"
+msgstr "Statut"
+
+#: application\modules/frontend/views/partials/header_business.phtml:20
+#: application\modules/frontend/views/partials/header_social.phtml:38
+#: application\modules/frontend/views/partials/leftbar_business.phtml:16
+#: application\modules/frontend/views/partials/leftbar_social.phtml:15
+msgid "Account settings"
+msgstr "Paramètres de compte"
+
+#: application\modules/frontend/views/partials/header_business.phtml:26
+msgid "Project list"
+msgstr "Liste des projets"
+
+#: application\modules/frontend/views/partials/header_business.phtml:27
+msgid "Project Request"
+msgstr "Demande de projet"
+
+#: application\modules/frontend/views/partials/header_business.phtml:28
+#: application\modules/frontend/views/partials/header_social.phtml:46
+msgid "Edit Profile"
+msgstr "Modifier mon profil"
+
+#: application\modules/frontend/views/partials/header_business.phtml:29
+#: application\modules/frontend/views/partials/header_social.phtml:47
+msgid "Sign Out"
+msgstr "Déconnexion"
+
+#: application\modules/frontend/views/partials/header_social.phtml:44
+msgid "My Wall"
+msgstr "Mon mur"
+
+#: application\modules/frontend/views/partials/header_social.phtml:45
+msgid "Display Profile"
+msgstr "Afficher mon profil"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:23
+#: application\modules/frontend/views/partials/leftbar_social.phtml:22
+msgid "Messages"
+msgstr "Messages"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:24
+#: application\modules/frontend/views/partials/leftbar_social.phtml:23
+msgid "Send Message"
+msgstr "Envoyer un message"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:27
+#: application\modules/frontend/views/partials/leftbar_social.phtml:26
+msgid "Connections"
+msgstr "Relations"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:28
+#: application\modules/frontend/views/partials/leftbar_social.phtml:27
+msgid "Add Contact"
+msgstr "Ajouter un contact"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:31
+#: application\modules/frontend/views/partials/leftbar_social.phtml:30
+msgid "My Companies"
+msgstr "Mes entreprises"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:32
+#: application\modules/frontend/views/partials/leftbar_social.phtml:31
+msgid "Add Company"
+msgstr "Ajouter entreprise"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:35
+#: application\modules/frontend/views/partials/leftbar_social.phtml:34
+msgid "My Deals"
+msgstr "Mes offres"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:36
+#: application\modules/frontend/views/partials/leftbar_social.phtml:35
+msgid "Add Deal"
+msgstr "Ajouter offres"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:43
+#: application\modules/frontend/views/partials/leftbar_social.phtml:68
+msgid "Selection de projets pour vous"
+msgstr "Selection de projets pour vous"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:55
+#: application\modules/frontend/views/partials/leftbar_business.phtml:70
+#: application\modules/frontend/views/partials/leftbar_social.phtml:61
+#: application\modules/frontend/views/partials/leftbar_social.phtml:84
+msgid "Voir toute la liste"
+msgstr "Voir toute la liste"
+
+#: application\modules/frontend/views/partials/leftbar_business.phtml:62
+msgid "Vos Projects"
+msgstr "Vos Projects"
+
+#: application\modules/frontend/views/partials/leftbar_social.phtml:42
+msgid "Les connaissez-vous ?"
+msgstr "Les connaissez-vous ?"
+
+#: application\modules/frontend/views/partials/rightbar_business.phtml:8
+msgid "Profile completion"
+msgstr "profil est complété"
+
+#: application\modules/frontend/views/partials/rightbar_business.phtml:28
+msgid "Derniers projets"
+msgstr "Derniers projets"
+
+#: application\modules/frontend/views/partials/rightbar_social.phtml:58
+msgid "les personnes consulte profil"
+msgstr "Les personnes qui ont consulté votre profil"
+
+#: application\modules/frontend/views/partials/rightbar_social.phtml:79
+#, fuzzy
+msgid "Inviter un contact"
+msgstr "Ajouter un commentaire"
+
+#: application\modules/frontend/views/partials/rightbar_social.phtml:89
+msgid "Publicite"
+msgstr "Publicité"
+
+#: application\modules/frontend/views/partials/wall-post.phtml:32
+msgid "Voir tout"
+msgstr "Voir tout"
+
+#: application\modules/frontend/views/partials/wall-post.phtml:40
+msgid "Ajouter un commentaire"
+msgstr "Ajouter un commentaire"
+
+#: application\modules/frontend/views/scripts/account/display.phtml:1
+msgid "Edit your Account"
+msgstr "Modifier mon compte"
+
+#: application\modules/frontend/views/scripts/account/display.phtml:6
+msgid "Nom"
+msgstr "Nom"
+
+#: application\modules/frontend/views/scripts/account/display.phtml:15
+msgid "prenom"
+msgstr "Prénom"
+
+#: application\modules/frontend/views/scripts/account/display.phtml:32
+msgid "Birthdate"
+msgstr "Date de naissance"
+
+#: application\modules/frontend/views/scripts/account/display.phtml:40
+msgid "Ville"
+msgstr "Ville"
+
+#: application\modules/frontend/views/scripts/account/display.phtml:49
+msgid "Telephone"
+msgstr "Téléphone"
+
+#: application\modules/frontend/views/scripts/account/display.phtml:59
+msgid "Description"
+msgstr "Description"
+
+#: application\modules/frontend/views/scripts/account/display.phtml:70
+msgid "change your password"
+msgstr "Changer mot de passe"
+
+#: application\modules/frontend/views/scripts/account/edit.phtml:10
+msgid "update Description"
+msgstr "MAJ Description"
+
+#: application\modules/frontend/views/scripts/account/edit.phtml:28
+msgid "Change Password"
+msgstr "Changer mot de passe"
+
+#: application\modules/frontend/views/scripts/point/sendmsgsponsor.phtml:1
+msgid "Merci pour la parrainage"
+msgstr ""
+
+#: application\modules/frontend/views/scripts/profile/displaysuggestmember.phtml:2
+msgid "Les connaissez-vous"
+msgstr "Les connaissez-vous"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:3
+#: application\modules/frontend/views/scripts/profile/index.phtml:77
+msgid "Experience professionnelle"
+msgstr "Expérience professionnelle"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:8
+msgid "Add Experience"
+msgstr "Ajouter un poste"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:10
+#: application\modules/frontend/views/scripts/profile/index.phtml:81
+msgid "start date"
+msgstr "Date de début"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:11
+#: application\modules/frontend/views/scripts/profile/index.phtml:82
+msgid "end date"
+msgstr "Date de fin"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:12
+#: application\modules/frontend/views/scripts/profile/index.phtml:83
+msgid "Company name"
+msgstr "Entreprise"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:16
+#: application\modules/frontend/views/scripts/profile/edit.phtml:56
+#: application\modules/frontend/views/scripts/profile/edit.phtml:93
+#, fuzzy
+msgid "action"
+msgstr "Fonction"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:28
+#: application\modules/frontend/views/scripts/profile/edit.phtml:74
+msgid "Modifier"
+msgstr "Modifier"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:31
+#: application\modules/frontend/views/scripts/profile/edit.phtml:77
+#: application\modules/frontend/views/scripts/profile/edit.phtml:107
+msgid "supprimer"
+msgstr "supprimer"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:41
+#: application\modules/frontend/views/scripts/profile/index.phtml:106
+msgid "Etudes"
+msgstr "Etudes"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:46
+msgid "Add Study"
+msgstr "Ajouter une formation"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:48
+#: application\modules/frontend/views/scripts/profile/index.phtml:110
+msgid "start_date"
+msgstr "Date de fin"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:49
+#: application\modules/frontend/views/scripts/profile/index.phtml:111
+msgid "end_date"
+msgstr "Date de fin"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:50
+#: application\modules/frontend/views/scripts/profile/index.phtml:112
+msgid "school name"
+msgstr "Nom de l'école"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:52
+#: application\modules/frontend/views/scripts/profile/index.phtml:114
+msgid "degree"
+msgstr "Degré"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:53
+#: application\modules/frontend/views/scripts/profile/index.phtml:115
+msgid "result"
+msgstr "Résultat"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:54
+#: application\modules/frontend/views/scripts/profile/index.phtml:116
+msgid "activity"
+msgstr "Activité"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:55
+#: application\modules/frontend/views/scripts/profile/index.phtml:117
+msgid "information add"
+msgstr "Information additionnelle"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:85
+#: application\modules/frontend/views/scripts/profile/index.phtml:140
+msgid "Competences"
+msgstr "Compétences"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:90
+msgid "Add skills"
+msgstr "Ajouter compétence"
+
+#: application\modules/frontend/views/scripts/profile/edit.phtml:92
+#: application\modules/frontend/views/scripts/profile/index.phtml:143
+msgid "skills"
+msgstr "compétence"
+
+#: application\modules/frontend/views/scripts/profile/index.phtml:3
+msgid "Informations personnelles"
+msgstr "Informations personnelles"
+
+#: application\modules/frontend/views/scripts/project/projectlist.phtml:1
+msgid "List Project"
+msgstr "Liste des projets"
+
+#: application\modules/frontend/views/scripts/project/projectrequest.phtml:1
+msgid "List Project Request"
+msgstr "Demande des projets"
+
+#: application\modules/frontend/views/scripts/user/add.phtml:1
+msgid "Merci de remplir le formulaire ci-dessous"
+msgstr "Merci de remplir le formulaire ci-dessous"
+
+#: application\modules/frontend/views/scripts/user/login.phtml:20
+msgid "Invalid username or password"
+msgstr "Invalide login ou mot de passe"
+
+#: application\modules/frontend/views/scripts/wall/index-ajax.phtml:10
+#: application\modules/frontend/views/scripts/wall/index.phtml:153
+msgid "all posts"
+msgstr "tous les posts"
+
+#: application\modules/frontend/views/scripts/wall/index-ajax.phtml:12
+#: application\modules/frontend/views/scripts/wall/index.phtml:155
+msgid "contacts only"
+msgstr "Mon réseau"
+
+#: application\modules/frontend/views/scripts/wall/index-ajax.phtml:14
+#: application\modules/frontend/views/scripts/wall/index.phtml:157
+msgid "My wall"
+msgstr "mon mur"
+
+#: application\modules/frontend/views/scripts/wall/index.phtml:139
+msgid "All network"
+msgstr "Tout le réseau"
+
+#: application\modules/frontend/views/scripts/wall/index.phtml:140
+msgid "My contacts only"
+msgstr "Mon réseau"
+
+#: application\modules/frontend/views/scripts/wall/notify-ajax.phtml:5
+#: application\modules/frontend/views/scripts/wall/notify-ajax.phtml:7
+msgid "new Tweet"
+msgstr "nouveau Tweet"
+
+#, fuzzy
+#~ msgid "firstname"
+#~ msgstr "Prénom"
+
+#, fuzzy
+#~ msgid "lastname"
+#~ msgstr "Nom"
+
+#~ msgid "Importez les adresses"
+#~ msgstr "Importez les adresses"
+
+#~ msgid "importez email"
+#~ msgstr "Importez les adresses e-mail de vos contacts depuis votre bureau"

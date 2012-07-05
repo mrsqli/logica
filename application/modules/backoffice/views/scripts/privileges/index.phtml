@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * Displays all the user groups
+ *
+ * @package backoffice_views
+ * @subpackage backoffice_views_privileges
+ * @copyright company
+ */
+$config = array();
+
+// messages
+$config['pageTitle'] = 'Manage privileges';
+$config['addMessage'] = 'Add new privilege';
+$config['emptyMessage'] = 'There is not privileges registered at this time.';
+
+// column names & indexes
+$config['columnNames'] = array(
+    'Name',
+    'Flag',
+    'Description',
+);
+$config['columnIndexes'] = array(
+    'name',
+    'flagName',
+    'description'
+);
+
+// render the default listing
+echo $this->partial(
+        'partials/default-listing.phtml', array(
+    'config' => $config,
+    'paginator' => $this->paginator,
+        )
+);

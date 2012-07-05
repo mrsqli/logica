@@ -1,0 +1,112 @@
+<br/><br/><br/><br/>
+<FIELDSET>
+    <LEGEND align=top><?= $this->t('Experience professionnelle') ?> </LEGEND> 
+    <hr/>
+    <table>
+
+        <td><a href="<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'addexperience'), 'default', true); ?>">
+                <?= $this->t('Add Experience') ?></a></td>
+        <tr>
+            <th><?= $this->t('start date') ?></th>
+            <th><?= $this->t('end date') ?></th>
+            <th><?= $this->t('Company name') ?></th>
+            <th><?= $this->t('function') ?></th>
+            <th><?= $this->t('mission') ?></th>
+            <th><?= $this->t('city') ?></th>
+            <th><?= $this->t('action') ?></th>
+
+        </tr>
+        <?php foreach ($this->experience as $exp) : ?>
+            <tr>
+                <td><?php echo $this->escape($exp->start_date); ?></td>
+                <td><?php echo $this->escape($exp->end_date); ?></td>
+                <td><?php echo $this->escape($exp->name); ?></td>
+                <td><?php echo $this->escape($exp->function); ?></td>
+                <td><?php echo $this->escape($exp->mission); ?></td>
+                <td><?php echo $this->escape($exp->city_name); ?></td>
+                <td>  <a href="<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'updatexperience', 'id' => $exp->experience_id), 'default', true); ?>">           
+                        <?= $this->t('Modifier') ?></a>
+                    |||
+                    <a href = "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'deletexperience', 'id' => $exp->experience_id), 'default', true); ?>">
+                        <?= $this->t('supprimer') ?></a></td>
+            </tr>
+        <?php endforeach;
+        ?>
+
+    </table>
+</fieldset>
+<br/>
+
+<FIELDSET>
+    <LEGEND align=top> <?= $this->t('Etudes') ?> </LEGEND> 
+    <hr/>
+    <table>
+
+        <td><a href="<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'addstudy'), 'default', true); ?>">
+                <?= $this->t('Add Study') ?></a></td>
+        <tr>
+            <th><?= $this->t('start_date') ?></th>
+            <th><?= $this->t('end_date') ?></th>
+            <th><?= $this->t('school name') ?></th>
+            <th><?= $this->t('domain') ?></th>
+            <th><?= $this->t('degree') ?></th>     
+            <th><?= $this->t('result') ?></th>
+            <th><?= $this->t('activity') ?></th>
+            <th><?= $this->t('information add') ?></th>
+            <th><?= $this->t('action') ?></th>
+
+        </tr>
+
+
+        <?php foreach ($this->study as $study) : ?>
+
+            <tr>
+                <td><?php echo $this->escape($study->start_date); ?></td>
+                <td><?php echo $this->escape($study->end_date); ?></td>
+                <td><?php echo $this->escape($study->school); ?></td>
+                <td><?php echo $this->escape($study->domain); ?></td>
+                <td><?php echo $this->escape($study->degree); ?></td>
+                <td><?php echo $this->escape($study->result); ?></td>
+                <td><?php echo $this->escape($study->activity); ?></td>
+                <td><?php echo $this->escape($study->information_add); ?></td>
+
+                <td>  <a href="<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'updatestudy', 'id' => $study->study_id), 'default', true); ?>    ">
+                        <?= $this->t('Modifier') ?></a>
+                    |||
+                    <a href = "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'deletestudy', 'id' => $study->study_id), 'default', true); ?>   ">
+                        <?= $this->t('supprimer') ?></a></td>
+            </tr>
+        <?php endforeach; ?>
+
+    </table>
+</fieldset>
+<br/>
+<FIELDSET>
+    <LEGEND align=top> <?= $this->t('Competences') ?> </LEGEND>
+    <hr/>
+    <table>
+
+        <td><a href="<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'addskills'), 'default', true); ?>">
+                <?= $this->t('Add skills') ?></a></td>
+        <tr>
+            <th><?= $this->t('skills') ?></th>
+            <th><?= $this->t('action') ?></th>
+        </tr>
+
+        <?php foreach ($this->skills as $skills) : ?>
+
+            <tr>
+                <td><?php echo $this->escape($skills->name); ?></td>
+                <td>  
+                    <!--
+                    <a href="<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'updateskills', 'id' => $skills->id), 'default', true); ?>">
+                        Modifier</a>
+                    |||   
+                    -->
+                    <a href="<?php echo $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'deleteskills', 'id' => $skills->id), 'default', true); ?>">
+                        <?= $this->t('supprimer') ?></a></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</fieldset>
+

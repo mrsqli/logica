@@ -1,0 +1,70 @@
+<?php
+$arrSocialControllers = array('account', 'index', 'profile', 'wall', 'user');
+$arrBusinessControllers = array('project');
+
+$currentPart = in_array(Zend_Registry::get('controllerName'), $arrBusinessControllers) ? 'business' : 'social';
+
+/*
+ * Variable globale
+ */
+$GLOBALS['isLogged'] = BaseUser::isLogged();
+if ($GLOBALS['isLogged']) {
+
+    $GLOBALS['memberConnected'] = App_Utilities::getMember_Registry();
+    $GLOBALS['instanceMembre'] = new Member();
+    App_Tag_Kernel::run('MemberTag');
+    $suggest = new MemberSuggestions();
+    $GLOBALS['SuggestMember'] = $suggest->getSuggestMember(App_Utilities::getIdMember());
+
+    // var_dump($GLOBALS['SuggestMember']);die;
+    $GLOBALS['SuggestProject'] = App_Tag_Kernel::run('ProjectTag');
+}
+?>
+<?php echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+        <meta http-equiv="content-style-type" content="text/css" /> 
+        <meta http-equiv="content-script-type" content="text/javascript" /> 
+
+
+        <?= $this->headMeta(); ?>
+        <?= $this->headTitle(); ?>
+
+        <?= $this->headScript()->appendFile($this->baseUrl() . '/js/jquery.min.js'); ?>
+        <?= $this->headLink()->prependStylesheet($this->baseUrl() . '/css/dashboard.css'); ?>
+        <?= $this->headLink()->appendStylesheet($this->baseUrl() . '/css/jquery-ui-1.7.2.custom.css'); ?>
+        <?= $this->headScript()->appendFile($this->baseUrl() . '/js/jquery-ui-1.7.2.custom.min.js'); ?>
+        <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/layout/func.inc.js"></script>
+    </head>
+
+    <body class="welcome"><div id="guidely-top"></div>
+
+        <?= $this->partial('partials/header_' . $currentPart . '.phtml'); ?>
+
+        <div id="wrapmain">
+            <div id="main" role="main">
+
+                <?php if ($GLOBALS['isLogged']): ?>
+                    <?= $this->partial('partials/leftbar_' . $currentPart . '.phtml'); ?>
+                <? endif; ?>
+
+                <section id="board">
+                    <section id="center">
+
+                        <h1><?php echo $this->escape($this->title); ?></h1>
+                        <?php echo $this->layout()->content; ?>
+
+                    </section>
+
+                    <?php if ($GLOBALS['isLogged']): ?>
+                        <?= $this->partial('partials/rightbar_' . $currentPart . '.phtml'); ?>
+                    <? endif; ?>
+
+
+                </section>
+            </div>
+        </div>
+        <?= $this->partial('partials/footer.phtml'); ?>
+    </body></html>

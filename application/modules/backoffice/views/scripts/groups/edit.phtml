@@ -1,0 +1,20 @@
+<?php
+/**
+ * Edit an user group
+ *
+ * @category backoffice
+ * @package backoffice_views
+ * @subpackage backoffice_views_groups
+ * @copyright company
+ */
+
+$config = array();
+$config['pageTitle'] = sprintf('Edit "%s" user group', $this->item['name']);
+
+echo $this->partial(
+    'partials/default-add-edit.phtml',
+    array(
+        'form' => $this->form,
+        'config' => $config
+    )
+);

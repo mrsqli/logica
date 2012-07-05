@@ -1,0 +1,28 @@
+<?php
+/**
+ * View for the default item details UI
+ *
+ * @category backoffice
+ * @package backoffice_views
+ * @subpackage partials
+ * @copyright company
+ */
+
+$helper = $this->listingUtilities($this->config);
+?>
+
+<div class="header"> 
+    <h1><?php $helper->pageTitle();?></h1>
+</div>
+<div class="finalaction">
+    <table>
+        <?php $indexes = array_combine($helper->getColumnNames(), $helper->getColumnIndexes()) ?>
+        <?php foreach($helper->getColumnNamesAndValues($this->item) as $columnName => $columnValue) : ?>
+            <tr>
+                <th valign="top"><?php echo $columnName;?>:</th>
+                <td><?php $helper->displayItem($columnValue, $indexes[$columnName]);?></td>
+            </tr>
+        <?php endforeach;?>
+    </table>
+    <p class="back"><a class="alt" href="<?php echo $this->config['backlink'];?>">← Go back</a></p>
+</div>

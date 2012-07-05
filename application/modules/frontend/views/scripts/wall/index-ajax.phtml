@@ -1,0 +1,28 @@
+<script>
+
+    $(document).ready(function() {                          
+        catchEvents();
+    });
+
+</script>
+<section id="blank_radar">
+    <?php if (is_null($this->currFilter) OR $this->currFilter == 'all') : ?>
+        <h2><?= $this->t('all posts') ?></h2> 
+    <?php elseif ($this->currFilter == 'co'): ?>
+        <h2><?= $this->t('contacts only') ?></h2>
+    <?php else : ?>
+        <h2><?= $this->t('My wall') ?></h2>
+    <?php endif; ?>
+
+    <ul>
+        <?php
+        foreach ($this->allContactWallPost as $wall):
+            $member = new Member();
+            $member = $member->getMember($wall->member_to_id);
+            ?>
+
+            <?= $this->partial('partials/wall-post.phtml', array('wall' => $wall, 'member' => $member)) ?>
+
+        <?php endforeach; ?>
+    </ul>
+</section>

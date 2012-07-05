@@ -1,0 +1,23 @@
+<li class="inbox">
+    <?=$this->t('Les connaissez-vous')?> ?
+    <ul>
+        <table>
+            <?php
+            for ($i = 1; $i < count($this->suggestMember['item_id']); $i++):
+                $member = new Member();
+                $member = $member->getMember($this->suggestMember['item_id'][$i]);
+                ?>
+           
+                <div class="avatar">
+                    <a href="#" ><img alt="Default_thumb"  src="<?=
+            $this->baseUrl() . '/images/Profil/' . $this->escape($member->image_url);
+                ?>" height="30px"></a>
+                    <font color=blue><?= $member->first_name . '  ' . $member->last_name .' ( '.$member->member_id.' )'; ?></font>
+                </div>
+
+
+            <?php endfor; ?>
+        </table>
+    </ul>
+
+</li>

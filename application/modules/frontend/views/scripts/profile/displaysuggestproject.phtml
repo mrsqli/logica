@@ -1,0 +1,23 @@
+<li class="inbox">
+    <?=$this->t('Selection de projets pour vous')?>
+    <ul>
+        <table>
+            <?php
+            for ($i = 1; $i < count($this->suggestProject['item_id']); $i++):
+                $project = new Project();
+                $project = $project->findById($this->suggestProject['item_id'][$i]);
+                ?>
+                <br/><br/><br/>
+                <div class="avatar">
+                    <a href="#" ><img alt="Default_thumb"  src="<?=
+            $this->baseUrl() . '/images/company/logo.jpg' //. $this->escape($member->image_url);
+                ?>" height="30px"></a>
+                    <font color=blue><?= $project->title; ?></font>
+                </div>
+
+
+            <?php endfor; ?>
+        </table>
+    </ul>
+
+</li>

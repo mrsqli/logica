@@ -1,0 +1,28 @@
+<script>
+
+    $(document).ready(function () {
+        $( "#birthdate" ).datepicker();
+
+    });
+    
+</script>
+<a href="<?php echo $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'updateprofildescription'), 'default', true); ?>">
+    <?= $this->t('update Description') ?></a>
+
+<img src="<?=
+    $this->baseUrl() . '/images/Profil/' .
+            $this->escape($this->item->image_url);
+    ?>" height="80" width="80"/>
+
+<br/>
+<TEXTAREA name="nom" rows=4 cols=40>
+    <?php echo $this->escape($this->item->profil_description); ?>
+</TEXTAREA>
+
+
+<br/><br/><br/><br/>
+
+<?= $this->form; ?>
+
+<a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'changepw'), 'default', true);
+?>" class="active"><?= $this->t('Change Password') ?></a>

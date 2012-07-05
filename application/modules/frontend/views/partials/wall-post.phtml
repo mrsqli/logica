@@ -1,0 +1,58 @@
+<li>
+    <?php if ($this->member->member_id == App_Utilities::getIdMember()) : ?>
+        <a href="#">
+            <img src="<?= $this->baseUrl() . '/images/delete.png' ?>" style="height: 16px;float: right"></a>
+    <?php endif; ?>
+    <a href="#" title="Add a Deal">
+        <div>
+            <?= $this->wall['status']; ?>
+            <i><?= $this->member->first_name . '  ' . $this->member->last_name . '       ' ?><font color=red> <?= date('d/m/Y H:i:s', $this->wall['time_create']); ?></font></i>                    
+        </div>
+    </a>
+    <div id="wall_comment_<?= $this->wall['wall_post_id'] ?>"/>
+
+    <!-- IF [comments] Soit boucle -->
+    <?php
+    $commentsByPost = new CommentWallPost();
+    $comments = $commentsByPost->getAllCommentByPostId($this->wall['wall_post_id']);
+    $commentCounter = 0;
+    $displayComment = true;
+    foreach ($comments as $comment):
+        $member = new Member();
+        $member = $member->getMember($comment->comment_by_member_id);
+        $commentCounter++;
+        if ($commentCounter > 3)
+            $displayComment = false;
+        echo $this->partial('partials/post-comments.phtml', array('comment' => $comment, 'member' => $member, 'show' => $displayComment));
+    endforeach;
+    ?>
+    <!-- [ENDIF]-->
+    <?php if (count($comments) > 3): ?>
+        <span style="float:left"><small><font color="green">
+                <a name="<?= $this->wall['wall_post_id']; ?>" class="more_comments" href="#"><?=$this->t('Voir tout')?></a></font></small>
+        </span>
+
+
+
+        <!--   <div style="clear: both"></div>     -->
+    <?php endif; ?>
+    <span style="float:right"><small><font color="green">
+            <a id="lien<?= $this->wall['wall_post_id']; ?>" name="<?= $this->wall['wall_post_id']; ?>" class="comment_link" href="#"><?=$this->t('Ajouter un commentaire')?></a></font></small>
+    </span>
+
+    <div style="clear: both"></div>
+
+    <div style="padding-left: 5px; display:none;" id="diplaycomment<?= $this->wall['wall_post_id']; ?>" class="update">
+
+        <textarea style="" cols="10" rows="5" id="text_<?= $this->wall['wall_post_id']; ?>"></textarea>
+
+        <input class="comment_submit" type="submit" name="<?= $this->wall['wall_post_id']; ?>" id="comment_<?= $this->wall['wall_post_id']; ?>"/>
+    </div>
+
+</li>
+
+
+
+
+
+

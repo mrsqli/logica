@@ -1,0 +1,64 @@
+<?php
+$t = Zend_Registry::get('Zend_Translate');
+?>
+<div id="wrapheader">
+    <header id="header" role="banner">
+        <div id="masthead">
+            <table style="left:0; position:absolute; top:0;">
+                <tr style="padding: 2px;">
+                    <td>
+                        <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'index', 'action' => 'changelang','language'=>'fr'), 'default', true); ?>">
+                            <img  src="/images/langage/France.png" alt="Default_thumb" style="height: 30px;width: 30px; float: right">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'index', 'action' => 'changelang','language'=>'en'), 'default', true); ?>">
+                            <img  src="/images/langage/englais.png" alt="Default_thumb" style="height: 30px;width: 30px; float: left">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'index', 'action' => 'changelang','language'=>'ar'), 'default', true); ?>">
+                            <img  src="/images/langage/maroc.png" alt="Default_thumb" style="height: 30px;width: 30px; float: left">
+                        </a>
+                    </td>
+                </tr>
+
+            </table>
+            <nav class="dashboard" id="navigation" role="menubar">
+
+                <?php if ($GLOBALS['isLogged']): ?>
+                    <div class="avatar">
+                        <a href="#" ><img alt="Default_thumb"  src="<?=
+                $this->baseUrl() . '/images/Profil/' . $this->escape($GLOBALS['memberConnected']->image_url);
+                    ?>" height="35px"></a>
+                    </div>
+
+                    <div class="current_user">
+                        <p class="current_user_name">
+                            <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'display'), 'default', true); ?>" class="upgrade_small"   title="Upgrade PRO"><?=$this->t('Account settings')?></a>
+                            <a href="#" title="toto toto"><?= $GLOBALS['memberConnected']->first_name . '  ' . $GLOBALS['memberConnected']->last_name; ?></a>
+                        </p>
+
+                        <div class="current_user_menu">
+                            <ul>                 
+                                <li><a  href="<?= $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'index'), 'default', true); ?>"   title=""><?=$this->t('My Wall')?></a></li>
+                                <li><a  href="<?= $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'index', 'id' => App_Utilities::getIdMember()), 'default', true); ?>"  title=""><?=$this->t('Display Profile')?></a></li>
+                                <li><a  href="<?= $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'edit'), 'default', true); ?>"   title=""><?=$this->t('Edit Profile')?></a></li>
+                                <li><a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'logout'), 'default', true); ?>"   title="Sign Out"><?=$this->t('Sign Out')?></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </nav>
+            </div>
+            <div id="header_icons">
+
+                </ul>
+            </div>
+            <div id="spotlight_search">
+                <input aria-haspopup="true" aria-autocomplete="list" role="textbox" autocomplete="off" class="ui-autocomplete-input" id="spotlight" placeholder="Search for People and Companies...">
+
+            </div>
+        <?php endif; ?>
+    </header>
+</div>

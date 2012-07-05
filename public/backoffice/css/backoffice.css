@@ -1,0 +1,816 @@
+/* 
+    Project     : Company Back Office
+    Created on  : Sep 8, 2010, 11:09:00
+    Author      : Ricardo Valiente
+*/
+
+/* Html elements
+-------------------------------------------------- */
+* { 
+    margin:0;
+    padding:0;
+}
+html,
+body {
+    height: 100%;
+}
+/* Opera Fix for Sticky Footer */
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;/
+}
+body,
+input,
+textarea,
+select {
+    font-family: 'Helvetica-Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    color: #555;
+}
+fieldset,
+img{
+    border: 0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    width: 100%;
+}
+button::-moz-focus-inner,
+a::-moz-focus-inner { 
+    border:0;
+    width: 100%;
+}
+li {
+    list-style:none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size:100%;
+    letter-spacing: -0.03em;
+    margin-bottom: .5em;
+}
+a {
+    color: #4183C4;
+    text-decoration: underline;
+    -webkit-transition:background .2s linear, color .2s linear;
+    -moz-transition:background .2s linear, color .2s linear;
+    transition:background .2s linear, color .2s linear;
+}
+a:hover,
+a:active {
+  color: #c00;
+}
+a:focus,
+button:focus { 
+    outline: none; 
+}
+h1{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+h2{
+    font-size: 18px;
+}
+h3{
+    font-size: 16px;
+}
+h4{
+    font-size: 14px;
+}
+
+/* Forms
+-------------------------------------------------- */
+input[type=text],
+input[type=password],
+textarea{
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px inset #ccc;
+    padding: 5px;
+    width: 200px;
+}
+dl.zend_form dt.hidden,
+dl.zend_form dd.hidden,
+dl.zend_form dt#submit-label{
+    display: none;
+}
+form dl.zend_form{
+    padding: 20px;
+    background-color: #d7e7f3;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+form legend{
+    padding:0 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #8baac9;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+}
+form dt{
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+form dd{
+    margin-bottom:15px;
+}
+form dd input#description{
+    width: 400px;
+}
+form dd#submit-element{
+    margin-bottom: 0;
+    margin-top: 20px;
+    border-top: 2px solid rgba(255,255,255,0.4);
+    padding-top: 15px;
+}
+form dd#submit-element span{
+    padding: 0 5px;
+    color: #aaa;
+}
+/* Check Buttons */
+form dd.checkboxGroup input{
+    margin: 4px;
+}
+/* Edit groups form /system/groups */
+form#groups-flippers dt + dd fieldset{
+    margin-bottom: 20px;
+}
+form#groups-flippers dt,
+form#groups-flippers dd{
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+form#groups-flippers dd{
+    float: left;
+    clear: left;
+}
+form#groups-flippers dd input{
+    margin-right: 4px;
+}
+form#groups-flippers dd#submit-element{
+    float: none;
+}
+
+/* Buttons */
+a.button,
+form dd#submit-element input{
+    color: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid #2e63a5;
+    background: #4183C4;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.5);
+    padding: 4px 6px;
+    cursor: pointer;
+    -webkit-transition:0;
+    -moz-transition:0;
+    transition:0;
+}
+a.button:hover,
+form dd#submit-element input:hover{
+    background: #2e63a5;
+    background: -moz-linear-gradient(top, #4183C4 50%, #2e63a5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#4183C4), color-stop(100%,#2e63a5)); /* webkit */    
+}
+form dd#submit-element input{
+    padding: 6px 10px;
+    box-shadow: 0 0 2px #2e63a5;
+    -moz-box-shadow: 0 0 2px #2e63a5;
+    -webkit-box-shadow: 0 0 2px #2e63a5;
+}
+/* Groups */
+#backofficeflags-label{
+    display: none;
+}
+
+/* Email tester */
+form#tools-email-tester label input{
+    margin: 0 5px 5px;
+}
+
+/*  Overall styles
+-------------------------------------------------- */
+a.edit{
+    background: url(../images/icons/fff/pencil.png) 0 50% no-repeat;
+    padding: 5px 0 5px 18px;
+}
+a.delete{
+    background: url(../images/icons/fff/cross.png) 0 50% no-repeat;
+    padding: 5px 0 5px 18px;
+}
+.hidden{
+    display: none !important;
+}
+
+/* Error/information messages 
+--------------------------------------------------------- */
+.msg {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid;
+    margin: 0 0 15px 0;
+    padding: 5px 10px;
+    font-size: 14px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.15);
+}
+.msg p {
+    margin: 6px 0 4px;
+    padding: 2px 0 2px 25px;
+}
+.msg-success {
+    border-color: #a6d877;
+    background: #d2ecba url("../images/msg-ok.png") repeat-x;
+    color: #336801;
+}
+.msg-success p {
+    background: url("../images/icons/led-ico/accept.png") no-repeat;
+}
+.msg-error {
+    border-color: #f3abab;
+    background: #f9c9c9 url("../images/msg-error.png") repeat-x;
+    color: #8d0d0d;
+}
+.msg-error p {
+    background: url("../images/icons/led-ico/cross_octagon.png") no-repeat;
+}
+.msg-warn {
+    border-color: #d7e059;
+    background: #f3f7aa url("../images/msg-warn.png") repeat-x;
+    color: #6c6600;
+}
+.msg-warn p {
+    background: url("../images/icons/led-ico/exclamation_octagon_fram.png") no-repeat;
+}
+.msg-info {
+    border-color: #9fd1f5;
+    background: #c3e6ff url("../images/msg-info.png") repeat-x;
+    color: #005898;
+}
+.msg-info p {
+    background: url("../images/icons/icons/led-ico/exclamation.png") no-repeat;
+}
+
+form ul.errors li{
+    color: #8D0D0D;
+    margin: 2px 0;
+}
+
+/*  Header
+-------------------------------------------------- */
+div#header{
+    background: #EDEDED; /* old browsers */
+    background: -moz-linear-gradient(top, #EDEDED 1%, #DCDCDC 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#EDEDED), color-stop(100%,#DCDCDC)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EDEDED', endColorstr='#DCDCDC',GradientType=0 ); /* ie */
+    border-bottom: 1px solid #c2c2c2;
+    position: relative;
+    height: 40px;
+}
+
+/* Logo
+-------------------------------------------------- */
+a#logo{
+    float: left;
+    cursor: pointer;
+    font-size: 17px;
+    line-height: 100%;
+    color: #333;
+    margin-top: 7px;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 0;
+    text-decoration: none;
+    z-index:2000;
+    position: relative;
+}
+a#logo span{
+    display: block;
+    font-size: 70%;
+    margin-top: -2px;
+    color: #888;
+}
+
+/* Navigation
+-------------------------------------------------- */
+ul#nav{
+    position: absolute;
+    left:0;
+    bottom:-1px;
+    font-size: 13px;
+    text-shadow: rgba(255, 255, 255, 0.7) 1px 1px 0;
+    z-index:200;
+}
+ul#nav li{
+    float: left;
+    margin-right: 5px;
+    position: relative;
+}
+ul#nav li a{
+    display: block;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    -moz-border-radius-topleft:3px;
+    -moz-border-radius-topright:3px;
+    color: #666;
+    text-decoration: none;
+    padding: 8px 10px;
+}
+ul#nav li a:hover,
+ul#nav li:hover > a{
+    background-color: #ccc;
+    color: #333;
+}
+ul#nav li.selected a{
+    color: #333;
+    border-bottom: 0;
+    border: 1px solid #c2c2c2;
+    border-bottom: 1px solid #f9f9f9;
+    font-weight: bold;
+    padding: 7px 10px;
+    background-color: #f9f9f9;
+}
+/* Second level
+ul#nav ul,
+ul#nav ul a{
+    display: none;
+}
+ul#nav li:hover ul,
+ul#nav li:hover ul a{
+    display: block;
+}
+ul#nav ul{
+    position: absolute;
+    top:30px;
+    left:0;
+    background-color: #ccc;
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+    -moz-border-radius-bottomleft:3px;
+    -moz-border-radius-bottomright:3px;
+    width: 200px;
+    background: #CCC;
+    background: -moz-linear-gradient(top, #CCC 1%, #EEE 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#CCC), color-stop(100%,#EEE));
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#EEE',GradientType=0 );
+}
+ul#nav ul li{
+    float: none;
+    margin: 0;
+}
+ul#nav ul li a {
+    border-radius: 0;
+    -moz-border-radius: 0;
+}
+ul#nav ul li:last-child > a {
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+    -moz-border-radius-bottomleft:3px;
+    -moz-border-radius-bottomright:3px;
+}*/
+
+/* User Navigation
+-------------------------------------------------- */
+div#user-nav ul{
+    position: absolute;
+    right:0;
+    top:0;
+    text-shadow: rgba(255, 255, 255, 0.7) 1px 1px 0;
+    color: #333;
+    background: #FCFCFC; /* old browsers */
+    background: -moz-linear-gradient(top, #FCFCFC 0%, #E8E8E8 97%, #FFF 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FCFCFC), color-stop(97%,#E8E8E8), color-stop(100%,#FFF)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FCFCFC', endColorstr='#FFF',GradientType=0 ); /* ie */
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+    -moz-border-radius-bottomleft:3px;
+    -moz-border-radius-bottomright:3px;
+    padding: 5px 10px;
+    border: 1px solid #cdcdcd;
+    border-top: 0;
+    font-size: 12px;
+    font-weight: bold;
+}
+div#user-nav li{
+    display: inline;
+    margin-right: 4px;
+    border-right: 1px solid #ccc;
+}
+div#user-nav a{
+    padding-right: 7px;
+}
+div#user-nav a.user{
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+div#user-nav a.user:hover{
+    color: #c00;
+}
+div#user-nav li.last{
+    border-right: 0;
+    margin-right: 0;
+    padding-right: 0;
+}
+div#user-nav li.last a{
+    padding-right: 0;
+}
+
+/* Secondary Navigation
+-------------------------------------------------- */
+div#sec-nav{
+    background: #f9f9f9;
+    background: -moz-linear-gradient(top, #f9f9f9 0%, #f9f9f9 89%, #E4E4E4 90%, #FFFFFF 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(89%,#f9f9f9), color-stop(90%,#E4E4E4), color-stop(100%,#FFFFFF));
+    font-size: 13px;
+    padding-bottom: 3px;
+}
+div#sec-nav ul li{
+    float: left;
+    margin-left: 10px;
+    display: inline;
+}
+div#sec-nav ul a{
+    display: block;
+    margin-right: 5px;
+    color: #999;
+    padding: 7px 0;
+    text-decoration: none;
+}
+div#sec-nav ul a:hover{
+    color: #333;
+    padding-bottom: 4px;
+    border-bottom: 3px solid #ccc;
+}
+div#sec-nav ul li.selected a{
+    color: #333;
+    padding-bottom: 4px;
+    border-bottom: 3px solid #4183C4;
+    font-weight: bold;
+}
+
+/* Container
+-------------------------------------------------- */
+div.wrapper {
+    min-height: 100%;
+}
+div#container{
+    background: #fff;
+    overflow:auto;
+    padding-bottom: 60px;
+}
+div#content{
+    float: right;
+    margin-top: 15px;
+}
+div#sidebar{
+    float: left;
+}
+
+/* Data Table Header
+-------------------------------------------------- */
+div.data-table-header h1{
+    float: left;
+    margin-right: 15px;
+}
+div.data-table-header a.button{
+    float: left;
+    margin-top: 5px;
+}
+
+/* Tables
+-------------------------------------------------- */
+div.data-table{
+    border: 1px solid #dcdcdc;
+    padding: 2px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+div.data-table table th,
+div.data-table table td{
+    text-align: left;
+    font-weight: normal;
+}
+div.data-table table thead th{
+    background: #d5e6f2;
+    background: -moz-linear-gradient(top, #d5e6f2 0%, #d5e6f2 49%, #DDEAF3 50%, #DDEAF3 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d5e6f2), color-stop(49%,#d5e6f2), color-stop(50%,#DDEAF3), color-stop(100%,#DDEAF3)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5e6f2', endColorstr='#DDEAF3',GradientType=0 ); /* ie */
+    font-weight: bold;
+    border-right: 1px solid rgba(255,255,255,0.4);
+    color: #666;
+    font-weight: bold;
+}
+div.data-table table thead th span{
+    border-left: 1px solid rgba(0,0,0,0.1);
+    display: block;
+    padding: 5px 8px;
+}
+div.data-table table tbody th,
+div.data-table table tbody td{
+    padding: 8px 10px;
+}
+div.data-table table th.first span{
+    border-left: 0;
+}
+div.data-table table th.last{
+    border-right: 0;
+}
+div.data-table table tr:nth-child(even){
+    background-color: #f6f8fa;
+}
+div.data-table table tr:hover{
+    background-color: #ffc;
+}
+div.data-table table ul.actions li{
+    display: inline;
+    margin: 0 5px;
+}
+div.data-table table ul.actions li a{
+	text-decoration: none;
+}
+div.data-table table .tc{
+    text-align: center;
+}
+
+/* Grid
+-------------------------------------------------- */
+ul.grid{
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+ul.grid li{
+    border: 1px solid #dcdcdc;
+    padding: 2px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    min-height:187px;
+    position: relative;
+    width: 31.5%;
+    margin:0 1% 1% 0;
+    display: inline-block;
+    vertical-align: top;
+}
+ul.grid li.last{
+    margin-right: 0;
+}
+ul.grid a.thumb{
+    position: absolute;
+    top:2px;
+    left:2px;
+}
+ul.grid a.thumb img{
+    width: 140px;
+    height: 187px;
+}
+ul.grid div.data{
+    margin: 0 0 0 150px;
+}
+ul.grid h4{
+    margin-left: -8px;
+    padding: 8px;
+    position: relative;
+    padding: 0px;
+}
+ul.grid h4 a{
+    padding: 8px;
+    color: #333;
+    display: block;
+    text-decoration: none;
+    background-color: #DDEAF3;
+}
+ul.grid h4 a:hover{
+    background-color: #c0daec;
+}
+ul.grid h4.premium a{
+    background: #ffebb5 url(../images/premium-star.png) 98% 50% no-repeat;
+    color: #645019;
+}
+ul.grid h4.premium a:hover{
+    background-color: #f4d98f;
+}
+ul.grid h4 span.id{
+    color: #999;
+}
+ul.grid p{
+    margin-top: 5px;
+}
+ul.grid ul.actions{
+    margin:10px 0 0 144px;
+    padding: 5px;
+}
+ul.grid ul.actions li{
+    display: inline;
+    float: none;
+    padding: 0;
+    border: 0;
+    min-height:0;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+/* Pagination
+-------------------------------------------------- */
+ul.pagination{
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+ul.pagination li{
+    display: inline;
+    margin-right: 0px;
+}
+ul.pagination a,
+ul.pagination span.current{
+    padding: 3px 8px;
+}
+ul.pagination li a{
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+}
+ul.pagination li a:hover{
+    color: #fff;
+    background-color: #4183C4;
+    border: 1px solid #4183C4;
+}
+ul.pagination a.text{
+    border: 1px solid #fff;
+}
+ul.pagination span.current{
+    font-size: 15px;
+}
+
+/* Log in
+-------------------------------------------------- */
+div#login{
+    margin: 0 auto 300px;
+    top:100px;
+    position: relative;
+    width: 400px;
+    color: #333;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 5px solid #ddd;
+    font-size: 12px;
+    padding: 1px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+div#login h2{
+    font-size: 20px;
+    padding: 15px 20px;
+    margin: 0;
+}
+div#login div#inner-login{
+    background-color: #d7e7f3;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-top: 10px;
+}
+div#login div#inner-login div.msg{
+    margin: 0 20px;
+}
+
+div#login form dt{
+    font-weight: bold;
+}
+div#login form dd{
+    margin-bottom: 20px;
+}
+div#login form dd#submit-element{
+    margin-bottom: 0;
+}
+div#login input[type=text],
+div#login input[type=password]{
+    width: 338px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/*  Final action forms
+-------------------------------------------------- */
+div.finalaction{
+    background-color: #d7e7f3;
+    text-align: left;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom:40px;
+}
+div.finalaction table{
+    width: 50%;
+}
+div.finalaction table th{
+    width: 30%;
+    border-left: 3px solid rgba(0,0,0,0.1);
+    padding-left: 5px;
+}
+div.finalaction table th,
+div.finalaction table td{
+    padding-bottom: 5px;
+}
+div.finalaction h2{
+    margin-bottom: 20px;
+}
+div.finalaction form dl.zend_form{
+    padding: 0;
+}
+div.finalaction p.back{
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Footer
+-------------------------------------------------- */
+div#footer{
+    position: relative;
+    margin-top: -40px;
+    height: 25px;
+    padding-top: 15px;
+    clear:both;
+    text-align: center;
+    font-size: 11px;
+    color: #666;
+    background: #f4f4f4;
+    background: -moz-linear-gradient(top, #fff 0%, #e4e4e4 9%, #f4f4f4 10%, #f4f4f4 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(9%,#E4E4E4), color-stop(10%,#f4f4f4), color-stop(100%,#f4f4f4));    
+}
+
+/* Error pages 
+--------------------------------------------------------- */
+div#errorpage{
+    padding: 1em;
+}
+div#errorpage img{
+    float: left;
+    margin-right: 3em;
+    border-radius:3px;
+    -moz-border-radius:3px;
+}
+div#errorpage h1{
+    font-size: 3em;
+    padding-top: 1em;
+}
+div#errorpage p{
+    font-size: 2em;
+    line-height: 1.5em;
+}
+
+/* Clearfix
+-------------------------------------------------- */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+* html .clearfix {
+    height: 1%;
+}
+
+.emoticon-easter-egg{
+    text-decoration:none;
+    color:#4183C4;
+}
+
+.metrics-100{
+    margin:0 auto;
+    width:960px;
+    height:400px;
+}
+
+.block25{
+    width:25%;
+}
+
+.block50{
+    width:50%;
+}
+
+.block75{
+    width:75%;
+}

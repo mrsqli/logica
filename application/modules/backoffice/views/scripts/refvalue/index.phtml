@@ -1,0 +1,48 @@
+<?php
+$config = array();
+
+// messages
+$config['pageTitle'] = 'Manage RefValue';
+$config['addMessage'] = 'Add new RefValue';
+$config['emptyMessage'] = 'We don\'t have refValue registered at this time.';
+
+// render the default listing
+$helper = $this->listingUtilities((array) $this->config);
+?>
+
+<div class="data-table-header clearfix">
+    <h1><?php $helper->pageTitle(); ?></h1>
+    <?php if ($helper->canShowAddButton() && $helper->canAdd()): ?>
+        <a class="button" href="<?php $helper->addUrl(); ?>">Add new url</a>
+    <?php endif; ?>    
+</div>
+
+
+<div class="data-table">
+    <table class="tablesorter">
+        <thead>
+            <tr>
+                <th>Reference name</th>
+                <th>Name</th>
+                <th>Count Used</th>
+                <th>Time Create</th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <?php foreach ($this->refvalue as $refValue) : ?>
+
+            <tr>
+                <td><?php echo $this->escape($refValue->name_ref); ?></td>
+                <td><?php echo $this->escape($refValue->name); ?></td>
+                <td><?php echo $this->escape($refValue->count_used); ?></td>
+                <td><?php echo $this->escape($refValue->time_create); ?></td>
+
+                <td>  
+
+                    <a href = "<?php echo $this->url(array('controller' => 'refvalue', 'action' => 'delete', 'id' => $refValue->value_id)); ?>">
+                        <img src="/images/icons/fff/cross.png"/></a></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

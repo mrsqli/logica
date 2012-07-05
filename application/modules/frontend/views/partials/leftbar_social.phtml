@@ -1,0 +1,95 @@
+
+
+<div id="sidebar">
+    <div class="sidebar_user">
+        <div class="fields">
+            <div class="input_set">
+                <div class="input_set">
+                    <p>
+                    <div id="self_card">
+                        <a href="#" ><img alt="Default_thumb" class="avatar_thumb" src="<?=
+$this->baseUrl() . '/images/Profil/' . $this->escape($GLOBALS['memberConnected']->image_url);
+?>" width="64px"></a>
+                        <ul>
+                            <li class="name"><a href="#" ><?= $GLOBALS['memberConnected']->first_name . '  ' . $GLOBALS['memberConnected']->last_name; ?></a></li>
+                            <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'display'), 'default', true); ?>" class="upgrade_small"   title="Upgrade PRO"><?= $this->t('Account settings') ?></a>
+                        </ul>
+                    </div>
+                    </p>
+                    <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'point', 'action' => 'becomeverify'), 'default', true); ?>" class="sidebar_add" title="Send Message"><?= $this->t('Devenir membre verifié') ?></a> 
+                    <br/>
+                    <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'becomepremium'), 'default', true); ?>" class="sidebar_add" title="Send Message"><?= $this->t('devenir membre premium') ?></a>
+                    <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+                        <ul>
+                            <li class="inbox">
+                                <a href="#"><?= $this->t('Messages') ?></a>
+                                <a href="#" class="sidebar_add" title="Send Message"><?= $this->t('Send Message') ?></a>
+                            </li>
+                            <li class="inbox">
+                                <a href="#" title="Connections"><?= $this->t('Connections') ?></a>
+                                <a href="#" class="sidebar_add" title="Add Contact"><?= $this->t('Add Contact') ?></a>
+                            </li>
+                            <li class="inbox">
+                                <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'addcompany'), 'default', true); ?>" class="" ><?= $this->t('My Companies') ?></a>
+                                <a href="#" class="sidebar_add" title="Add Company"><?= $this->t('Add Company') ?></a>
+                            </li>
+                            <li class="inbox">
+                                <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'display'), 'default', true); ?>" class="" title="My Deals"><?= $this->t('My Deals') ?></a>
+                                <a href="#" class="sidebar_add" title="Add Deal"><?= $this->t('Add Deal') ?></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+                        <ul>
+                            <li class="inbox">
+                                <a href="#"><?= $this->t('Les connaissez-vous ?') ?></a>
+                                <ul>
+                                    <?php
+                                    for ($i = 1; $i < 6; $i++):
+                                        $member = new Member();
+                                        $member = $member->getMember($GLOBALS['SuggestMember'][$i]['item_id']);
+                                        ?>
+                                        <div class="avatar">
+                                            <a href="#" ><img alt="Default_thumb"  src="<?=
+                                    $this->baseUrl() . '/images/Profil/' . $this->escape($member->image_url);
+                                        ?>" height="30px"></a>
+                                            <font color=blue><?= $member->first_name . '  ' . $member->last_name; ?></font>
+                                            <img  src="/images/button.png" alt="Default_thumb" style="height: 30px;width: 30px; float: right">
+
+                                        </div>
+
+
+                                    <?php endfor; ?>
+                                </ul>
+                                <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'displaysuggestmember'), 'default', true); ?>"><?= $this->t('Voir toute la liste') ?></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+                        <ul>
+                            <li class="inbox">
+                                <a href="#"><?= $this->t('Selection de projets pour vous') ?></a>
+                                <ul>
+                                    <?php
+                                    for ($i = 1; $i < 3; $i++):
+                                        $project = new Project();
+                                        $project = $project->findById($GLOBALS['SuggestProject']['item_id'][$i])
+                                        ?>
+                                        <br/>
+                                        <div class="avatar">
+                                            <a href="#" ><img alt="Default_thumb"  src="<?=
+                                    $this->baseUrl() . '/images/company/logo.jpg' //. $this->escape($project->logo);
+                                        ?>" height="30px"></a>
+                                            <font color=blue><?= $project->title; ?></font>
+                                        </div>
+                                    <?php endfor; ?>
+                                </ul>
+                                <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'displaysuggestproject'), 'default', true); ?>"><?= $this->t('Voir toute la liste') ?></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

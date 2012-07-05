@@ -1,0 +1,12 @@
+<?php if ($this->checkOtherWall != '0'): ?>
+    <center>
+        <h2>
+             <?php if (is_null($this->currFilter) OR $this->currFilter == 'all') : ?>
+        <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'index'), 'default', true); ?>">  <?= $this->checkOtherWall; ?> <?=$this->t('new Tweet')?></a>
+        <?php elseif ($this->currFilter == 'co'): ?>
+        <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'index', 'filter' => 'co'), 'default', true);  ?>">  <?= $this->checkOtherWall; ?> <?=$this->t('new Tweet')?></a>    
+        <?php endif; ?>
+    </h2>
+    </center>
+<?php else : echo " "; ?>
+<?php endif; ?>

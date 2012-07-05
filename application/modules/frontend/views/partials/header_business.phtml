@@ -1,0 +1,47 @@
+<div id="wrapheader">
+    <header id="header" role="banner">
+        <div id="masthead">
+            <h1>
+                <a href="#">
+                    SNB
+                </a>
+            </h1>
+            <nav class="dashboard" id="navigation" role="menubar">
+
+                <?php if ($GLOBALS['isLogged']): ?>
+                    <div class="avatar">
+                        <a href="#" ><img alt="Default_thumb"  src="<?=
+                $this->baseUrl() . '/images/Profil/' . $this->escape($GLOBALS['memberConnected']->image_url);
+                    ?>" height="35px"></a>
+                    </div>
+
+                    <div class="current_user">
+                        <p class="current_user_name">
+                            <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'display'), 'default', true); ?>" class="upgrade_small"   title="Upgrade PRO"><?= $this->t('Account settings') ?></a>
+                            <a href="#" title="toto toto"><?= $GLOBALS['memberConnected']->first_name . '  ' . $GLOBALS['memberConnected']->last_name; ?></a>
+                        </p>
+
+                        <div class="current_user_menu">
+                            <ul>                 
+                                <li><a  href="<?= $this->url(array('module' => 'frontend', 'controller' => 'project', 'action' => 'projectlist'), 'default', true); ?>"   title=""><?= $this->t('Project list') ?></a></li>
+                                <li><a  href="<?= $this->url(array('module' => 'frontend', 'controller' => 'project', 'action' => 'projectrequest'), 'default', true); ?>"  title=""><?= $this->t('Project Request') ?></a></li>
+                                <li><a  href="<?= $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'edit'), 'default', true); ?>"   title=""><?= $this->t('Edit Profile') ?></a></li>
+                                <li><a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'account', 'action' => 'logout'), 'default', true); ?>"   title="Sign Out"><?= $this->t('Sign Out') ?></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+            </nav>
+        </div>
+        <div id="header_icons">
+
+            </ul>
+        </div>
+        <div id="spotlight_search">
+            <input aria-haspopup="true" aria-autocomplete="list" role="textbox" autocomplete="off" class="ui-autocomplete-input" id="spotlight" placeholder="Search for Projects...">
+
+        </div>
+
+    </header>
+</div>

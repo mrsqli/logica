@@ -1,0 +1,87 @@
+<?php
+/**
+ * Default layout, used to render most parts of the application
+ *
+ * @category backoffice
+ * @package backoffice_layouts
+ * @copyright company
+ */
+
+// configure the title
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('ForNet Backoffice');
+
+// add generic CSS files
+$this->headLink()->appendStylesheet($this->baseUrl() . '/css/gridsystem.css');
+$this->headLink()->appendStylesheet($this->baseUrl() . '/css/backoffice.css');
+
+//Add the ZFDebug Toolbar only if enabled in app.ini
+if(Zend_Controller_Front::getInstance()->hasPlugin('ZFDebug_Controller_Plugin_Debug')){
+    $this->headScript()->offsetSetFile(2, $this->baseUrl() . '/js/zfdebug.js');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/zfdebug.css');
+}
+
+$user = Zend_Auth::getInstance()->getIdentity();
+
+$bodyClass = Zend_Registry::get('controllerName') . Zend_Registry::get('actionName');
+
+$this->AutoloadResources();
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+    <head> 
+        
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+        <meta http-equiv="content-style-type" content="text/css" /> 
+        <meta http-equiv="content-script-type" content="text/javascript" /> 
+        
+        <link rel="shortcut icon" type="image/ico" href="<?php echo $this->baseUrl();?>/images/favicon.png" />
+        
+        <?php echo $this->headTitle() . PHP_EOL;?>
+        <?php echo $this->headLink() . PHP_EOL;?>
+        
+        <!--[if !IE 7]>
+            <style type="text/css">
+                div.wrapper {display:table;height:100%}
+            </style>
+        <![endif]-->
+    </head>
+    <body class="<?php echo $bodyClass;?>">
+        <div class="wrapper">
+            <div id="header" class="container_12">
+                <a id="logo" title="Company BackOffice" class="grid_1" href="<?php echo $this->baseUrl();?>/">ForNet <span>BackOffice</span></a>
+                <?php echo $this->renderMenu();?>
+                <div id="user-nav" class="grid_11 clearfix">
+                    <ul>
+                        <li>
+                            <a class="user" href="<?php echo $this->baseUrl();?>/profile/edit/"><?php echo $user->firstname . ' ' . $user->lastname;?></a>
+                            <?php echo $this->EasterEgg()->emoticon(); ?>
+                        </li>
+                        <li><a href="<?php echo $this->baseUrl();?>/profile/change-password/">Change password</a></li> 
+                        <li class="last"><a id="logout" href="<?php echo $this->baseUrl();?>/profile/logout/">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div id="container" class="container_12 clearfix">
+                <div id="sec-nav" class="container_12">
+                    <?php echo $this->renderSubMenu();?>
+                </div>
+            
+                <div id="content" class="grid_12">
+                    <!-- flash messenger - displays success / fail messages to the user -->
+                    <?php echo $this->flashMessenger();?>
+                
+                    <!-- main content - the content of the view will be rendered here -->
+                    <?php echo $this->layout()->content;?>
+                </div>
+            </div>
+        </div>
+        
+        <div id="footer">
+            © Company ForNet — 2012
+        </div>
+        <?php echo $this->headScript() . PHP_EOL;?>
+    </body> 
+</html>

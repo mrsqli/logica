@@ -1,0 +1,19 @@
+<?php
+/**
+ * View that defines the default add/edit UI 
+ *
+ *
+ * @category backoffice
+ * @package backoffice_views
+ * @subpackage partials
+ * @copyright company
+ */
+
+$helper = $this->listingUtilities($this->config);
+
+?>
+
+<div class="header"> 
+    <h1><?php $helper->pageTitle();?></h1>
+</div> 
+<?php echo $this->form;?>

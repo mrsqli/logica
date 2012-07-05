@@ -1,0 +1,5 @@
+# Set behaviour for all files, in case developers don't have core.autocrlf set.
+* -text
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary

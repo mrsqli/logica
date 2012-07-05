@@ -1,0 +1,51 @@
+<?php
+$config = array();
+
+// messages
+$config['pageTitle'] = 'Manage URL';
+$config['addMessage'] = 'Add new url';
+$config['emptyMessage'] = 'We don\'t have url registered at this time.';
+
+// render the default listing
+$helper = $this->listingUtilities((array) $this->config);
+?>
+
+<div class="data-table-header clearfix">
+    <h1><?php $helper->pageTitle(); ?></h1>
+    <?php if ($helper->canShowAddButton() && $helper->canAdd()): ?>
+        <a class="button" href="<?php $helper->addUrl(); ?>">Add new url</a>
+    <?php endif; ?>    
+</div>
+
+
+<div class="data-table">
+    <table class="tablesorter">
+        <thead>
+            <tr>
+                <th>Source</th>
+                <th>Alias</th>
+                <th>Params</th>
+                <th>isStatic</th>
+                <th>metaKeywords</th>
+                <th>metaDescription</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <?php foreach ($this->url as $url) : ?>
+
+            <tr>
+                <td><?php echo $this->escape($url->source); ?></td>
+                <td><?php echo $this->escape($url->alias); ?></td>
+                <td><?php echo $this->escape($url->params); ?></td>
+                <td><?php echo $this->escape($url->isStatic); ?></td>
+                <td><?php echo $this->escape($url->metaKeywords); ?></td>
+                <td><?php echo $this->escape($url->metaDescription); ?></td>
+                <td>  
+                    <a href="<?php echo $this->url(array('controller' => 'url', 'action' => 'edit', 'id' => $url->urlAliasId)); ?>">
+                        <img src="/images/icons/fff/pencil.png"/></a>
+                    <a href = "<?php echo $this->url(array('controller' => 'url', 'action' => 'delete', 'id' => $url->urlAliasId)); ?>">
+                        <img src="/images/icons/fff/cross.png"/></a></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

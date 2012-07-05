@@ -1,0 +1,155 @@
+
+<FIELDSET>
+    <LEGEND align=top> <?= $this->t('Informations personnelles') ?> </LEGEND> 
+    <table width="90%" cellpadding="0" cellspacing="1" class="texte">
+        <tr>
+            <td width="50%" align="right">
+                <strong></strong> 
+            </td>
+            <td> <img src="<?= $this->baseUrl() . '/images/Profil/' . $this->escape($this->item->image_url); ?>" height="80" width="80"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%" align="right">
+                <strong><?= $this->t('Nom') ?>:</strong> 
+            </td>
+            <td>
+                <font color=blue>  <?= $this->item['last_name']; ?> </font>
+            </td>
+
+        </tr>
+        <tr>
+            <td width="50%" align="right">
+                <strong><?= $this->t('prenom') ?>:</strong> 
+            </td>
+            <td>
+                <font color=blue>  <?= $this->item['first_name']; ?> </font>
+            </td>
+
+        </tr>
+        <tr>
+            <td width="50%" align="right">
+                <strong><?= $this->t('Email') ?>:</strong> 
+            </td>
+            <td>
+                <font color=blue>  <?= $this->item['email']; ?> </font>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%" align="right">
+                <strong><?= $this->t('Birthdate') ?>:</strong> 
+            </td>
+            <td>
+                <font color=blue>  <?= $this->item['birthdate']; ?> </font>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%" align="right">
+                <strong><?= $this->t('Ville') ?>:</strong> 
+            </td>
+            <td>
+                <font color=blue>  <?= $this->item['name']; ?> </font>
+            </td>
+
+        </tr>
+        <tr>
+            <td width="50%" align="right">
+                <strong><?= $this->t('Telephone') ?>:</strong> 
+            </td>
+            <td>
+                <font color=blue>  <?= $this->item['phone_number']; ?> </font>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="50%" align="right">
+                <hr/>
+                <strong><?= $this->t('Description') ?>:</strong> 
+            </td>
+            <td>
+                <hr/>
+                <font color=red>  <?= $this->item['profil_description']; ?> </font>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<FIELDSET>
+    <LEGEND align=top> <?= $this->t('Experience professionnelle') ?> </LEGEND> 
+    <hr/>
+    <table>
+        <tr>
+            <th><?= $this->t('start date') ?></th>
+            <th><?= $this->t('end date') ?></th>
+            <th><?= $this->t('Company name') ?></th>
+            <th><?= $this->t('function') ?></th>
+            <th><?= $this->t('mission') ?></th>
+            <th><?= $this->t('city') ?></th>
+
+        </tr>
+
+
+        <?php foreach ($this->experience as $exp) : ?>
+            <tr>
+                <td><?php echo $this->escape($exp->start_date); ?></td>
+                <td><?php echo $this->escape($exp->end_date); ?></td>
+                <td><?php echo $this->escape($exp->name); ?></td>
+                <td><?php echo $this->escape($exp->function); ?></td>
+                <td><?php echo $this->escape($exp->mission); ?></td>
+                <td><?php echo $this->escape($exp->city_name); ?></td>    
+            </tr>
+        <?php endforeach;
+        ?>
+
+    </table>
+</fieldset>
+<FIELDSET>
+    <LEGEND align=top> <?= $this->t('Etudes') ?> </LEGEND> 
+    <hr/>
+    <table>
+        <tr>
+            <th><?= $this->t('start_date') ?></th>
+            <th><?= $this->t('end_date') ?></th>
+            <th><?= $this->t('school name') ?></th>
+            <th><?= $this->t('domain') ?></th>
+            <th><?= $this->t('degree') ?></th>     
+            <th><?= $this->t('result') ?></th>
+            <th><?= $this->t('activity') ?></th>
+            <th><?= $this->t('information add') ?></th>
+
+        </tr>
+
+
+        <?php foreach ($this->study as $study) : ?>
+
+            <tr>
+                <td><?php echo $this->escape($study->start_date); ?></td>
+                <td><?php echo $this->escape($study->end_date); ?></td>
+                <td><?php echo $this->escape($study->school); ?></td>
+                <td><?php echo $this->escape($study->domain); ?></td>
+                <td><?php echo $this->escape($study->degree); ?></td>
+                <td><?php echo $this->escape($study->result); ?></td>
+                <td><?php echo $this->escape($study->activity); ?></td>
+                <td><?php echo $this->escape($study->information_add); ?></td>
+            </tr>
+        <?php endforeach; ?>
+
+    </table>
+</fieldset>
+
+<FIELDSET>
+    <LEGEND align=top> <?= $this->t('Competences') ?> </LEGEND>
+    <table>
+        <tr>
+            <th><?= $this->t('skills') ?></th>
+        <hr/>
+        </tr>
+
+        <?php foreach ($this->skills as $skills) : ?>
+
+            <tr>
+                <td><?php echo $this->escape($skills->name); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</fieldset>
+

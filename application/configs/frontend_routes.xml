@@ -1,0 +1,104 @@
+
+<routes>    
+                              <!-- Page Visiteur -->     
+    <ProfileLogin type="Zend_Controller_Router_Route">
+        <route>/Authentification</route>
+        <defaults  module="frontend" controller="profile" action="login"  />
+    </ProfileLogin>
+    
+    <UserAdd type="Zend_Controller_Router_Route">
+        <route>/AjouterUser</route>
+        <defaults  module="frontend" controller="user" action="add"  />
+    </UserAdd>
+    
+    <IndexLangFr type="Zend_Controller_Router_Route">
+        <route>/Francais</route>
+        <defaults  module="frontend" controller="index" action="langfr"  />
+    </IndexLangFr>
+        
+    <IndexLangEn type="Zend_Controller_Router_Route">
+        <route>/Englais</route>
+        <defaults  module="frontend" controller="index" action="langen"  />
+    </IndexLangEn>
+    
+                          <!-- Page   Membre  -->     
+    <ProfileIndex type="Zend_Controller_Router_Route">
+        <route>/membre/:id/Accueil</route>
+        <defaults  module="frontend" controller="profile" action="index"  />
+    </ProfileIndex>
+    
+    <ProfileEdit type="Zend_Controller_Router_Route">
+        <route>/membre/:id/UpdateProfil</route>
+        <defaults  module="frontend" controller="profile" action="edit"  />
+    </ProfileEdit>
+    
+    <ProfileChangePW type="Zend_Controller_Router_Route">
+        <route>/membre/:id/UpdatePW</route>
+        <defaults  module="frontend" controller="profile" action="changepw"  />
+    </ProfileChangePW>
+    
+    <ProfileCompleter type="Zend_Controller_Router_Route">
+        <route>/membre/:id/CompleteProfile</route>
+        <defaults  module="frontend" controller="profile" action="complete"  />
+    </ProfileCompleter >
+    
+     <ProfileDescription type="Zend_Controller_Router_Route">
+        <route>/membre/:id/ProfilDescription</route>
+        <defaults  module="frontend" controller="profile" action="updateprofildescription"  />
+    </ProfileDescription  >
+    <!-- ************************** Experience   ********************************* -->
+    <ProfileUpdateExp type="Zend_Controller_Router_Route">
+        <route>/membre/:id/UpdateExperience</route>
+        <defaults  module="frontend" controller="profile" action="updatexperience"  />
+    </ProfileUpdateExp>
+    
+    <ProfileDeleteExp type="Zend_Controller_Router_Route">
+        <route>/membre/:id/DeleteExperience</route>
+        <defaults  module="frontend" controller="profile" action="deletexperience"  />
+    </ProfileDeleteExp>
+    
+    <ProfileAddExp type="Zend_Controller_Router_Route">
+        <route>/membre/:id/AddExperience</route>
+        <defaults  module="frontend" controller="profile" action="addexperience"  />
+    </ProfileAddExp>
+      <!-- ************************** Study   ********************************* -->
+    <ProfileUpdateStudy type="Zend_Controller_Router_Route">
+        <route>/membre/:id/UpdateStudy</route>
+        <defaults  module="frontend" controller="profile" action="updatestudy"  />
+    </ProfileUpdateStudy>
+    
+    <ProfileDeleteStudy type="Zend_Controller_Router_Route">
+        <route>/membre/:id/DeleteStudy</route>
+        <defaults  module="frontend" controller="profile" action="deletestudy"  />
+    </ProfileDeleteStudy>
+    
+    <ProfileAddStudy type="Zend_Controller_Router_Route">
+        <route>/membre/:id/AddStudy</route>
+        <defaults  module="frontend" controller="profile" action="addstudy"  />
+    </ProfileAddStudy>
+      <!-- ************************** Skills   ********************************* -->
+    <ProfileUpdateSkills type="Zend_Controller_Router_Route">
+        <route>/membre/:id/UpdateSkills</route>
+        <defaults  module="frontend" controller="profile" action="updateskills"  />
+    </ProfileUpdateSkills>
+    
+    <ProfileDeleteSkills type="Zend_Controller_Router_Route">
+        <route>/membre/:id/DeleteSkills</route>
+        <defaults  module="frontend" controller="profile" action="deleteskills"  />
+    </ProfileDeleteSkills>
+    
+    <ProfileAddSkills type="Zend_Controller_Router_Route">
+        <route>/membre/:id/AddSkills</route>
+        <defaults  module="frontend" controller="profile" action="addskills"  />
+    </ProfileAddSkills>
+    <!-- *************************************************************** -->
+    <ProfileLogOut type="Zend_Controller_Router_Route">
+        <route>/membre/:id/LogOut</route>
+        <defaults  module="frontend" controller="profile" action="logout"  />
+    </ProfileLogOut>
+    
+    <Index type="Zend_Controller_Router_Route">
+        <route>/index/lang/:lang/</route>
+        <defaults  module="frontend" controller="index" action="index"  />
+    </Index> 
+</routes>

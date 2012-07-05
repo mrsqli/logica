@@ -1,0 +1,57 @@
+<?php
+/**
+ * Displays all the user groups
+ *
+ * @package backoffice_views
+ * @subpackage backoffice_views_groups
+ * @copyright company
+ */
+
+$config = array();
+
+// messages
+$config['pageTitle'] = 'Manage user groups';
+$config['addMessage'] = 'Add new user group'; 
+$config['emptyMessage'] = 'There is not user editable groups registered at this time.';
+
+// column names & indexes
+$config['columnNames'] = array(
+    'Group',
+    'Parent group',
+);
+$config['columnIndexes'] = array(
+    'name',
+    'parent_name'
+);
+
+// additional actions
+$config['additionalActions'] = array(
+    'flippers_dev'    =>  array(
+        'action'        => 'flippers',
+        'title'         => 'Edit flippers on dev',
+        'link_class'    => 'ico',
+        'img_alt'       => 'Flippers on dev',
+        'img_url'       => '/images/icons/led-ico/user.png',
+        'parameter'     => TRUE,
+    ),
+    // 'flippers_prod'    =>  array(
+    //     'action'        => 'flippers',
+    //     'title'         => 'Edit flippers on production',
+    //     'link_class'    => 'ico',
+    //     'img_alt'       => 'Flippers on production',
+    //     'img_url'       => '/images/icons/led-ico/user_business.png',
+    //     'parameter'     => TRUE,
+    // ),
+);
+
+// configure the permissions
+$config['linkOrder'] = array('edit', 'delete', 'flippers_dev');
+
+// render the default listing
+echo $this->partial(
+    'partials/default-listing.phtml',
+    array(
+        'config' => $config,
+        'paginator' => $this->paginator,
+    )
+);

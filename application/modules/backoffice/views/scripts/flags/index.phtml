@@ -1,0 +1,61 @@
+<?php
+/**
+ * Displays all the flippers
+ *
+ * @package backoffice_views
+ * @subpackage backoffice_views_groups
+ * @copyright company
+ */
+
+$config = array();
+
+// messages
+$config['pageTitle'] = 'Manage flags';
+$config['showAddButton'] = FALSE;
+$config['emptyMessage'] = 'No flags registered at this time.';
+
+// column names & indexes
+$config['columnNames'] = array(
+    'Name',
+    'Description',
+    'Active on Production',
+    'Active on Development'
+);
+$config['columnIndexes'] = array(
+    'name',
+    'description',
+    'active_on_prod',
+    'active_on_dev',
+);
+$config['columnDataTypes'] = array(
+    'active_on_prod' => 'boolean',
+    'active_on_dev' => 'boolean',
+);
+
+// additional actions
+$config['actions'] = array(
+    'toggle_dev'    =>  array(
+        'action'        => 'toggledev',
+        'title'         => 'Toggle dev',
+        'parameter'     => TRUE,
+        'icon'          => FALSE,
+    ),
+    'toggle_prod'    =>  array(
+        'action'        => 'toggleprod',
+        'title'         => 'Toggle prod',
+        'parameter'     => TRUE,
+        'icon'          => FALSE,
+    ),
+);
+
+// configure the permissions
+$config['linkOrder'] = array('toggle_prod', 'toggle_dev');
+
+// render the default listing
+echo $this->partial(
+    'partials/default-listing.phtml',
+    array(
+        'config' => $config,
+        'paginator' => $this->paginator,
+    )
+);

@@ -1,0 +1,34 @@
+<aside id="rail" role="complementary">
+    <div class="widget profile_completion" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
+        <div class="progress_bar">
+            <?php
+            $value = $GLOBALS['instanceMembre']->calculateProfileCompletion(App_Utilities::getIdMember());
+            ?>
+            <p>                
+                <b><?= $this->t('Profile completion') ?></b>
+            </p>
+            <div class="progress" style="width:<?= $value . '%' ?>">
+                <?= $value; ?>%
+            </div>
+        </div>
+
+    </div>
+
+    <div class="widget importing" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
+        <h2>Recherche un projet</h2>
+
+        <p class="imports">
+
+
+        </p>
+    </div>
+
+    <div class="input_set" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
+        <div class="widget">
+            <h2><?= $this->t('Derniers projets') ?></h2>
+
+
+        </div>
+    </div>    
+
+</aside>

@@ -1,0 +1,44 @@
+<?php
+/**
+ * Displays an user
+ *
+ * @category backoffice
+ * @package backoffice_views
+ * @subpackage backoffice_views_groups
+ * @copyright company
+ */
+
+$config = array();
+$config['pageTitle'] = sprintf('Detailed view for %s %s', $this->item['firstname'], $this->item['lastname']);
+
+// column names & indexes
+$config['columnNames'] = array(
+    'Username',
+    'Email',
+    'First name',
+    'Last name',
+    'Phone number',
+    'Last login',
+    'Last password update',
+    'Groups',
+);
+$config['columnIndexes'] = array(
+    'username',
+    'email',
+    'firstname',
+    'lastname',
+    'phone_number',
+    'last_login',
+    'last_password_update',
+    'groupNames',
+);
+
+$config['backlink'] = $this->backlink;
+
+echo $this->partial(
+    'partials/default-view.phtml',
+    array(
+        'config' => $config,
+        'item' => $this->item
+    )
+);
