@@ -24,6 +24,7 @@ class ContactController extends App_Frontend_Controller {
     public function listmycontactAction() {
 
         $filter = $this->_getParam('filter', false);
+        // Créons un paginateur pour cette requête
 
         if ($filter != false) {
             $this->_helper->layout->disableLayout();
@@ -33,8 +34,10 @@ class ContactController extends App_Frontend_Controller {
             $this->_sessionMember->mycontact = $results;
         }
 
+        $paginator = Zend_Paginator::factory($results);
+        $paginator->setCurrentPageNumber($this->_getParam('page', 1));
         //var_dump($results);die;
-        $this->view->mycontacts = $results;
+        $this->view->mycontacts = $paginator;
         $this->view->filter = $filter;
     }
 
