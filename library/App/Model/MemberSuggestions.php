@@ -82,7 +82,7 @@ class MemberSuggestions extends App_Model {
         $select = $this->select()
                 ->setIntegrityCheck(false)
                 ->from($this->_name)
-                ->where('member_id = ' . $idMember);
+                ->where('member_id = ' . $idMember." and group_name='MemberTag'");
 
         return $this->fetchall($select)->toArray();
     }

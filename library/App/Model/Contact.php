@@ -42,7 +42,7 @@ class Contact extends App_Model {
     public function getMy_Contact($idMember) {
 
         $member = new Member();
-        $where = " exists (select C.member_id from Contact C where " .
+        $where = " exists (select C.member_id from contact C where " .
                 "(M.member_id=C.friend_member_id and C.member_id=" . $idMember . ") " .
                 "or (M.member_id=C.member_id and C.friend_member_id=" . $idMember . ") " .
                 ")";

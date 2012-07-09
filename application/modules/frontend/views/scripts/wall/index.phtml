@@ -74,7 +74,7 @@
             data: "notify=1&filter="+window._filter,
             success: function(resp){
                 if(resp){
-                   $('#notify').html(resp);
+                    $('#notify').html(resp);
                 }
             },
             error: function(resp){
@@ -84,7 +84,7 @@
     }
     function deleteComment(Id) {
 
-       $.ajax({
+        $.ajax({
             type: "POST",
             url: "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'wall', 'action' => 'deletecomment'), 'default', true); ?>",
             async: true,
@@ -128,7 +128,7 @@
             <strong>
                 Note:
             </strong>
-          Tapez un « # » devant les mots.
+            Tapez un « # » devant les mots.
         </p>
     </form>   
 </div>
@@ -136,9 +136,9 @@
 <div class="update" class="">
     <b>Filter posts : </b>
     <span style="float: right">      
-        <a id="all" class="filter <?php if (!isset($this->currFilter) || is_null($this->currFilter) || $this->currFilter == 'all'): ?> bold <?php endif; ?>" href="#" ><?=$this->t('All network')?></a> 
-        | <a class="filter <?php if ($this->currFilter == 'co'): ?> bold <?php endif; ?>" id="co" href="#" ><?=$this->t('My contacts only')?></a>
-        | <a class="filter <?php if ($this->currFilter == 'mywall'): ?> bold <?php endif; ?>" id="mywall" href="#" ><?=$this->t('My Wall')?></a>
+        <a id="all" class="filter <?php if (!isset($this->currFilter) || is_null($this->currFilter) || $this->currFilter == 'all'): ?> bold <?php endif; ?>" href="#" ><?= $this->t('All network') ?></a> 
+        | <a class="filter <?php if ($this->currFilter == 'co'): ?> bold <?php endif; ?>" id="co" href="#" ><?= $this->t('My contacts only') ?></a>
+        | <a class="filter <?php if ($this->currFilter == 'mywall'): ?> bold <?php endif; ?>" id="mywall" href="#" ><?= $this->t('My Wall') ?></a>
     </span>
 </div>
 
@@ -150,11 +150,11 @@
     <section id="blank_radar">
 
         <?php if (is_null($this->currFilter) OR $this->currFilter == 'all') : ?>
-            <h2><?=$this->t('all posts')?></h2> 
+            <h2><?= $this->t('all posts') ?></h2> 
         <?php elseif ($this->currFilter == 'co'): ?>
-            <h2><?=$this->t('contacts only')?></h2>
+            <h2><?= $this->t('contacts only') ?></h2>
         <?php else : ?>
-            <h2><?=$this->t('My wall')?></h2>
+            <h2><?= $this->t('My wall') ?></h2>
         <?php endif; ?>
 
         <ul id="test">
@@ -164,7 +164,6 @@
                 $member = $member->getMember($wall[member_to_id]);
                 ?>
                 <?= $this->partial('partials/wall-post.phtml', array('wall' => $wall, 'member' => $member)) ?>
-
             <?php endforeach; ?>
         </ul>
     </section>
