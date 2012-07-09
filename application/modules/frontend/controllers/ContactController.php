@@ -30,8 +30,7 @@ class ContactController extends App_Frontend_Controller {
             $results = $this->_sessionMember->mycontact;
         } else {
             $results = $this->_contactModel->getMy_Contact(App_Utilities::getIdMember(), $filter);
-
-         //   $this->_sessionMember->mycontact = $results;
+            $this->_sessionMember->mycontact = $results;
         }
 
         //var_dump($results);die;
