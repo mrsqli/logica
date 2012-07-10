@@ -1,5 +1,5 @@
 <li class="inbox">
-    <?=$this->t('Les connaissez-vous')?> ?
+    <?= $this->t('Les connaissez-vous') ?> ?
     <ul>
         <table>
             <?php
@@ -7,16 +7,21 @@
                 $member = new Member();
                 $member = $member->getMember($this->suggestMember['item_id'][$i]);
                 ?>
-           
+
                 <div class="avatar">
                     <a href="#" ><img alt="Default_thumb"  src="<?=
             $this->baseUrl() . '/images/Profil/' . $this->escape($member->image_url);
                 ?>" height="30px"></a>
-                    <font color=blue><?= $member->first_name . '  ' . $member->last_name .' ( '.$member->member_id.' )'; ?></font>
+                    <font color=blue><?= $member->first_name . '  ' . $member->last_name . ' ( ' . $member->member_id . ' )'; ?></font>
                 </div>
 
 
             <?php endfor; ?>
+            <tr>
+                <td>
+                    <?php ;//$this->paginationControl($this->suggestMember, null, 'paginators/default.phtml', array('params' => array('controller' => 'profile', 'action' => 'displaysuggestmember'))); ?>
+                </td>
+            </tr> 
         </table>
     </ul>
 

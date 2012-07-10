@@ -13,7 +13,7 @@
         <li>
         <!-- Previous page link -->
         <?php if (isset($this->previous)): ?>
-            <a class="text" href="<?php echo $this->url(array('page' => $this->previous)); ?>"> ← Previous</a>
+            <a class="text" href="<?php echo $this->url($this->params + array('page' => $this->previous),'default',true); ?>"> ← Previous</a>
         <?php /* else: ?>
             <span class="disabled"> ← Previous</span>
         <?php */ endif; ?>
@@ -23,7 +23,7 @@
         <?php foreach ($this->pagesInRange as $page): ?>
             <li>
             <?php if ($page != $this->current): ?>
-                <a href="<?php echo $this->url(array('page' => $page)); ?>"><?php echo $page; ?></a>
+                <a href="<?php echo $this->url($this->params + array('page' => $page),'default',true); ?>"><?php echo $page; ?></a>
             <?php else: ?>
                 <span class="current"><?php echo $page; ?></span>
             <?php endif; ?>
@@ -33,7 +33,7 @@
         <!-- Next page link -->
         <li>
         <?php if (isset($this->next)): ?>
-            <a class="text" href="<?php echo $this->url(array('page' => $this->next)); ?>">Next →</a>
+            <a class="text" href="<?php echo $this->url($this->params + array('page' => $this->next),'default',true); ?>">Next →</a>
         <?php /* else: ?>
             <span class="disabled">Next →</span>
         <?php */ endif; ?>

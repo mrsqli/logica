@@ -20,9 +20,9 @@ class SearchForm extends App_Frontend_Form {
         parent::init();
 
         // set the form's method
-
-
-
+// set the form's method
+        $this->setAction('/contact/listmycontact')
+                ->setMethod('post');
 
 
         $firstName = new Zend_Form_Element_Text('search');
@@ -40,7 +40,7 @@ class SearchForm extends App_Frontend_Form {
                 )
         );
         $this->addElement($firstName);
-        
+
         $status = new Zend_Form_Element_Radio('status');
         $status->setOptions(
                 array(
@@ -54,7 +54,7 @@ class SearchForm extends App_Frontend_Form {
                     'validators' => array(
                         'NotEmpty',
                     ),
-                    'multiOptions' => array('Reseau' => 'Réseau', 'Mes Contacts' => 'Mes Contacts'),
+                    'multiOptions' => array('Reseau' => 'Réseau', 'Mycontact' => 'Mes Contacts'),
                 )
         );
         $this->addElement($status);

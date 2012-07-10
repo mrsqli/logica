@@ -17,9 +17,12 @@ function catchEventsLayout() {
     $('#submit_sponsor').click(function(){
         sendMsgForSponsor($('#fistName_son').val(),$('#lastName_son').val(),$('#email_son').val());
     });
-//
-    
-        
+    //
+//    $('#submit_search').unbind('click');
+//    $('#submit_search').click(function(){
+//        searchcontact($('#search').val(),$('#status').val());
+//    });
+//        
    
     
         

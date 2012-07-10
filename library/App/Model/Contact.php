@@ -39,19 +39,24 @@ class Contact extends App_Model {
      * @param type $idMember
      * @return type 
      */
-    public function getMy_Contact($idMember) {
+    public function getMy_Contact($idMember, $filter) {
 
         $member = new Member();
-        $where = " exists (select C.member_id from contact C where " .
+        if ($filter != null and $filter != 'all')
+            $where = "M.last_name like '" . $filter . "%' and";
+
+        $where .= " exists (select C.member_id from contact C where " .
                 "(M.member_id=C.friend_member_id and C.member_id=" . $idMember . ") " .
                 "or (M.member_id=C.member_id and C.friend_member_id=" . $idMember . ") " .
                 ")";
+
 
         $select = $this->select()
                 ->setIntegrityCheck(false)
                 ->from(array('M' => $member->_name), array('M.member_id'))
                 ->where($where);
-
+        // var_dump($select->__tostring());
+        //    die;
         return $this->fetchAll($select);
     }
 

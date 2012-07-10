@@ -31,7 +31,7 @@
     }
     
    
-    
+                  
     /**
      * Page loaded
      */     
@@ -77,11 +77,9 @@
         <?php endforeach; ?>
         <tr>
             <td>
-                <?php echo $this->mycontacts; ?>
+                <?= $this->paginationControl($this->mycontacts, null, 'paginators/default.phtml', array('params' => array('controller' => 'contact', 'action' => 'listmycontact'))); ?>
             </td>
-        </tr>    
-    </table>
-
+        </tr>    </table>
     <table style="width: 20px; float:right">
         <tr>
             <td><a href="#" class="filtercontact" id="all">ALL</a></td>

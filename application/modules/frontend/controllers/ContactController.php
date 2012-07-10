@@ -28,15 +28,14 @@ class ContactController extends App_Frontend_Controller {
 
         if ($filter != false) {
             $this->_helper->layout->disableLayout();
-            $results = $this->_sessionMember->mycontact;
+            //$results = $this->_sessionMember->mycontact;
         } else {
-            $results = $this->_contactModel->getMy_Contact(App_Utilities::getIdMember(), $filter);
-            $this->_sessionMember->mycontact = $results;
+            //   $results = $this->_contactModel->getMy_Contact(App_Utilities::getIdMember(), $filter);
+            //  $this->_sessionMember->mycontact = $results;
         }
-
+        $results = $this->_contactModel->getMy_Contact(App_Utilities::getIdMember(), $filter);
         $paginator = Zend_Paginator::factory($results);
         $paginator->setCurrentPageNumber($this->_getParam('page', 1));
-        //var_dump($results);die;
         $this->view->mycontacts = $paginator;
         $this->view->filter = $filter;
     }

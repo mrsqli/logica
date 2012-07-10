@@ -24,7 +24,30 @@
             }
         });
     }
-    
+    /**
+     * Add a comment to Wall post
+     */
+     //    function  searchcontact(word,status){
+//         
+//        $.ajax({
+//                  
+//            type: "POST",                                                                                  
+//            url: "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'contact', 'action' => 'listmycontact'), 'default', true); ?>",
+//            async: false,
+//            cache: false,
+//            timeout: 30000,
+//            data: "filter="+word,
+//     
+//            success: function(resp){
+//                if(resp){
+//                    $('#abcd').html(resp);                    
+//                }
+//            },
+//            error: function(resp){
+//                alert('une erreur s\'est produite');
+//            }
+//        });
+//    }     
     /**
      * Page loaded
      */     
@@ -41,7 +64,7 @@
     <div class="widget profile_completion" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
         <div class="progress_bar">
             <?php
-              $member = new Member();
+            $member = new Member();
             $value = $member->calculateProfileCompletion(App_Utilities::getIdMember());
             ?>
             <p>                
@@ -56,12 +79,12 @@
         <ul>
             <li class="inbox">
                 <h2><?= $this->t('Recherche') ?></h2>
- 
+
                 <?php
                 $p = new SearchForm();
                 echo $p;
                 ?>
-          
+
             </li>
         </ul>
     </nav>

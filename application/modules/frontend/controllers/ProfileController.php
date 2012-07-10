@@ -304,7 +304,8 @@ class ProfileController extends App_Frontend_Controller {
      *  
      */
     public function displaysuggestmemberAction() {
-
+        // $paginator = Zend_Paginator::factory(App_Tag_Kernel::run('MemberTag'));
+        // $paginator->setCurrentPageNumber($this->_getParam('page', 1));
         $this->view->suggestMember = App_Tag_Kernel::run('MemberTag');
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Default parent controller for all the backoffice controllers
  *
@@ -6,9 +7,8 @@
  * @package App_Backoffice
  * @copyright company
  */
+abstract class App_Backoffice_Controller extends App_Controller {
 
-abstract class App_Backoffice_Controller extends App_Controller
-{
     /**
      * Holds the title for this controller
      * 
@@ -16,49 +16,49 @@ abstract class App_Backoffice_Controller extends App_Controller
      * @access public
      */
     public $title = '';
-    
+
     /**
      * Overrides init() from App_Controller
      * 
      * @access public
      * @return void
      */
-    public function init(){
+    public function init() {
         parent::init();
     }
-    
+
     /**
      * Overrides preDispatch() from App_Controller
      * 
      * @access public
      * @return void
      */
-    public function preDispatch(){
+    public function preDispatch() {
         parent::preDispatch();
-        
+
         $controllerName = $this->getRequest()->getControllerName();
         $actionName = $this->getRequest()->getActionName();
-        
+
         $this->view->headScript()->prependFile($this->view->baseUrl() . '/js/jquery.min.js');
-        
+
         Zend_Registry::set('controllerName', $controllerName);
         Zend_Registry::set('actionName', $actionName);
         // check the Flag and Flippers
         $this->_checkFlagFlippers();
     }
-    
+
     /**
      * Overrides postDispatch() from App_Controller
      * 
      * @access public
      * @return void
      */
-    public function postDispatch(){
+    public function postDispatch() {
         parent::postDispatch();
-        
+
         $this->_helper->layout()->getView()->headTitle($this->title);
     }
-    
+
     /**
      * Gets the current page. Convenience method for using
      * paginators
@@ -67,12 +67,13 @@ abstract class App_Backoffice_Controller extends App_Controller
      * @access protected
      * @return int
      */
-    protected function _getPage($default = 1){
+    protected function _getPage($default = 1) {
         $page = $this->_getParam('page');
         if (!$page || !is_numeric($page)) {
             return $default;
         }
-        
+
         return $page;
     }
+
 }
