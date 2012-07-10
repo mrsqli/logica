@@ -11,13 +11,13 @@ $GLOBALS['isLogged'] = BaseUser::isLogged();
 if ($GLOBALS['isLogged']) {
 
     $GLOBALS['memberConnected'] = App_Utilities::getMember_Registry();
-    $GLOBALS['instanceMembre'] = new Member();
+    $members = new Member();
+    $GLOBALS['lastContactInscribed'] = $members->last_contact_inscribed(array('item_id' => array(0 => App_Utilities::getIdMember()), 'limit' => 4));
     App_Tag_Kernel::run('MemberTag');
     $suggest = new MemberSuggestions();
     $GLOBALS['SuggestMember'] = $suggest->getSuggestMember(App_Utilities::getIdMember());
 
-    // var_dump($GLOBALS['SuggestMember']);die;
-    $GLOBALS['SuggestProject'] = App_Tag_Kernel::run('ProjectTag');
+    //var_dump($GLOBALS['SuggestMember']);die;
 }
 ?>
 <?php echo $this->doctype(); ?>

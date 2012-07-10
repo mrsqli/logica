@@ -34,4 +34,14 @@ class CompanyMember extends App_Model {
         return $row->company_id;
     }
 
+    public function getCompanyByMember($idMember) {
+        $select = $this->select()
+                ->setIntegrityCheck(false)
+                ->from($this->_name)
+                ->where('member_id=' . $idMember)
+                ->limit(1);
+
+        return $this->fetchrow($select);
+    }
+
 }

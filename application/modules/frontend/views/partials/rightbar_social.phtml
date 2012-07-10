@@ -41,7 +41,8 @@
     <div class="widget profile_completion" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
         <div class="progress_bar">
             <?php
-            $value = $GLOBALS['instanceMembre']->calculateProfileCompletion(App_Utilities::getIdMember());
+              $member = new Member();
+            $value = $member->calculateProfileCompletion(App_Utilities::getIdMember());
             ?>
             <p>                
                 <b>Profile completion</b>
@@ -51,27 +52,45 @@
             </div>
         </div>
     </div>
-    <div class="widget importing" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1em;">
-        <h5><?= $this->t('les personnes consulte profil') ?></h5>
-        <br>
+    <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
         <ul>
-            <?php
-            for ($i = 1; $i < 6; $i++):
-                $member = new Member();
-                $member = $member->getMember($GLOBALS['SuggestMember'][$i]['item_id']);
+            <li class="inbox">
+                <h2><?= $this->t('Recherche') ?></h2>
+ 
+                <?php
+                $p = new SearchForm();
+                echo $p;
                 ?>
-                <div class="avatar">
-                    <a href="#" ><img alt="Default_thumb"  src="<?=
-            $this->baseUrl() . '/images/Profil/' . $this->escape($member->image_url);
-                ?>" height="30px"></a>
-                    <font color=blue><?= $member->first_name . '  ' . $member->last_name; ?></font>
-                </div>
-
-
-            <?php endfor; ?>
+          
+            </li>
         </ul>
-    </div>
+    </nav>
+    <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+        <ul>
+            <li class="inbox">
+                <a href="#"><?= $this->t('Les connaissez-vous ?') ?></a>
+                <ul>
+                    <?php
+                    for ($i = 1; $i < 6; $i++):
+                        $member = new Member();
+                        $member = $member->getMember($GLOBALS['SuggestMember'][$i]['item_id']);
+                        ?>
+                        <div class="avatar">
+                            <a href="#" ><img alt="Default_thumb"  src="<?=
+                    $this->baseUrl() . '/images/Profil/' . $this->escape($member->image_url);
+                        ?>" height="30px"></a>
+                            <font color=blue><?= $member->first_name . '  ' . $member->last_name; ?></font>
+                            <img  src="/images/button.png" alt="Default_thumb" style="height: 30px;width: 30px; float: right">
 
+                        </div>
+
+
+                    <?php endfor; ?>
+                </ul>
+                <a href="<?= $this->url(array('module' => 'frontend', 'controller' => 'profile', 'action' => 'displaysuggestmember'), 'default', true); ?>"><?= $this->t('Voir toute la liste') ?></a>
+            </li>
+        </ul>
+    </nav>
     <div class="widget importing" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
         <h2><?= $this->t('Inviter un contact') ?></h2>
         <?php
@@ -84,21 +103,5 @@
             </div>
         </h3>
     </div>
-
-    <div class="input_set" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
-        <div class="widget">
-            <h2><?= $this->t('Publicite') ?></h2>
-            <a href="#" ><img alt="Default_thumb"  src="<?=
-        $this->baseUrl() . '/images/publicite/pub1.jpg';
-        ?>" height="250px"></a>
-            <!--
-            <p class="center">
-                <a class="green_button" href="#" title="">
-                    button
-                </a>
-            </p>
-            -->
-        </div>
-    </div>    
 
 </aside>

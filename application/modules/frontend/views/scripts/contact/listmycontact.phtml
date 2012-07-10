@@ -1,0 +1,162 @@
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/contact/func.inc.js"></script>
+<script>
+    
+    /**
+     * Comment
+     */
+    var _filter='all';
+    function filterContact(filter) {
+        
+        window._filter=filter;
+        
+        $('#abcd').html("<b id='img_wait'>Chargement en cours...</b>");
+        $.ajax({
+            type: "POST",
+            url: "<?php echo $this->url(array('module' => 'frontend', 'controller' => 'contact', 'action' => 'listmycontact'), 'default', true); ?>",
+            async: true,
+            cache: false,
+            timeout: 30000,
+            data: "filter="+filter,
+            success: function(resp){
+                if(resp){                 
+                    $('#abcd').html(resp);
+                    // $('#img_wait').remove();                  
+   
+                }
+            },
+            error: function(resp){
+                alert('une erreur s\'est produite');
+            }
+        });
+    }
+    
+   
+    
+    /**
+     * Page loaded
+     */     
+    $(document).ready(function() {                          
+        catchEvents();
+    });
+       
+    /**
+     * de
+     */
+    
+    
+       
+</script>
+
+<div id="abcd">
+    <table  style="width: 230px; float:left">
+
+        <?php
+        foreach ($this->mycontacts as $mycontact) :
+
+            $members = new Member();
+            $member = $members->getMember($mycontact->member_id);
+            if ($this->filter != false && $this->filter != all && ( strtolower(substr(($member->last_name), 0, 1)) != $this->filter))
+                continue;
+            $membersCompany = new CompanyMember();
+            $memberCompany = $membersCompany->getCompanyByMember($mycontact->member_id);
+            ?>
+
+            <tr>
+                <td>
+                    <img alt="Default_thumb"  src="<?=
+        $this->baseUrl() . '/images/Profil/' . $this->escape($member->image_url);
+            ?>" height="35px">
+                </td>
+                <td>
+                    <br/>
+                    <h2>  <?= $member->last_name . "  " . $member->first_name; ?></h2>
+                    <?= $memberCompany->function; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+    <table style="width: 20px; float:right">
+        <tr>
+            <td><a href="#" class="filtercontact" id="all">ALL</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="a">a</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="b">b</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="c">c</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="d">d</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="e">e</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="f">f</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="g">g</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="h">h</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="i">i</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="j">j</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="k">k</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="l">l</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="m">m</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="n">n</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="o">o</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="p">p</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="q">q</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="r">r</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="s">s</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="t">t</a></td>
+        <tr>
+            <td><a href="#" class="filtercontact" id="u">u</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="v">v</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="w">w</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="x">x</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="y">y</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="filtercontact" id="z">z</a></td>
+        </tr>
+
+    </table>
+</div>
