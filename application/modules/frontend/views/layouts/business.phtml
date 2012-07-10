@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+        <meta http-equiv="content-style-type" content="text/css" /> 
+        <meta http-equiv="content-script-type" content="text/javascript" /> 
+       
+        <?= $this->headMeta(); ?>
+        <?= $this->headTitle(); ?>
+        <?= $this->headScript()->appendFile($this->baseUrl() . '/js/jquery.min.js'); ?>
+        <?= $this->headLink()->prependStylesheet($this->baseUrl() . '/css/dashboard.css'); ?>
+        <?= $this->headLink()->appendStylesheet($this->baseUrl() . '/css/jquery-ui-1.7.2.custom.css'); ?>
+        <?= $this->headScript()->appendFile($this->baseUrl() . '/js/jquery-ui-1.7.2.custom.min.js'); ?>
+<!-- <script type="text/javascript" src=" <!?= //$this->baseUrl() . '/common/js/functions.inc.js'   ?>"></script> -->
+    <style type="text/css">
+table.sample {
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+table.sample th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+
+}
+table.sample td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	
+}
+</style>
+    </head>
+    <body class="welcome"><div id="guidely-top"></div>
+        <?= $this->partial('partials/header_business.phtml'); ?>
+        <div id="sidebar">
+            <div class="sidebar_user">
+                <div class="fields">
+                    <div class="input_set">
+                        <div class="input_set">
+                            <p>
+                                <div id="self_card">
+                            </p><br/>
+                            <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+                                <ul>
+                                    <li class="inbox">
+                                        profil
+                                    </li>
+                                </ul>
+                            </nav></div></div>
+                    <div class="input_set">
+                        <p>
+                            <div id="self_card">
+                        </p><br/>
+                        <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+                            <ul>
+                                <li class="inbox">
+                                    agenda
+                                </li>
+                            </ul>
+                        </nav></div></div>
+                <div class="input_set">
+                    <p>
+                        <div id="self_card">
+                    </p><br/>
+                    <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+                        <ul>
+                            <li class="inbox">
+                                Mes messages
+                            </li>
+                        </ul>
+                    </nav></div></div>
+        </div></div></div></div>
+        <section id="board">
+            <section id="center">
+                <h1><?php echo $this->escape($this->title); ?></h1>
+                <?php echo $this->layout()->content; ?>
+            </section>
+        </section>
+        <aside id="rail" role="complementary">   
+            <div class="widget importing" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
+                <h2>Chiffre affaire Potentiel</h2>
+
+                <p class="imports">
+                </p>
+            </div>
+            <div class="widget importing" style="background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; padding:1.5em;">
+                <h2>Mes projets en cours</h2>
+                <p class="imports">
+                </p>
+            </div>
+        </aside>
+     
+    </body></html>

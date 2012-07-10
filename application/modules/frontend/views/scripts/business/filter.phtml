@@ -1,0 +1,10 @@
+
+<table class="sample">
+    <thead><tr><th>title</th><th>Sujet</th><th>Specification</th></tr></thead>
+    <tbody>
+        <?php foreach ($this->projects as $row): ?>
+            <tr><td><?= $row->title; ?></td><td><?= $row->subject; ?></td><td><?= $row->fie_specification; ?></td></tr>
+    <?php endforeach; ?>
+</tbody>
+</table>
+<div><?= $this->paginationControl($this->projects, $scrollingStyle = null, 'paginators/ajax.phtml', array('jsFunctionName' => 'getList')); ?></div>

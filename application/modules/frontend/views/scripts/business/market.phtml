@@ -1,0 +1,86 @@
+
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/jquery.form.js"></script>
+<script type="text/javascript">
+    function getList(pagenumber){
+        var params = $('#business-market').serialize();
+        //params.page = pagenumber;
+        $.ajax({
+            url : '<?= $this->url(array('controller' => 'business', 'action' => 'filter'), 'default', true); ?>',
+            data : params + '&page=' + pagenumber,
+            type : 'POST',
+            success : function(responseText){
+                $('#list-body').html(responseText);
+            }
+        });
+    }
+    $(function() {
+        $('#dateBegin').datepicker({});
+        $('#dateEnd').datepicker({});
+      
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+           $('#business-market').ajaxForm({
+            url: '<?= $this->url(array('controller' => 'business', 'action' => 'filter'), 'default', true) ?>',
+            success : function(responseText){
+   
+                $('#list-body').html(responseText);
+        
+            }
+        });
+      
+    });
+
+
+</script>    
+<div id="sidebar">
+    <div class="sidebar_user">
+        <div class="fields">
+            <div class="input_set">
+                <center><div class="input_set">
+                        <p>
+                        <div id="self_card">
+                            </p><br/>
+                            <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+                                <ul>
+                                    <li class="inbox">
+                                    <u><h1>Filtre</h1></u>
+                                    </li>
+                                    <?php echo $this->form; ?>
+
+                                </ul>
+                            </nav></div></div></center></div></div></div></div>
+
+
+<div id="sidebar">
+    <div class="sidebar_user">
+        <div class="fields">
+            <div class="input_set">
+                <center><div class="input_set">
+                        <p>
+                        <div id="self_card">
+                            </p><br/>
+                            <nav style="margin-top: 8px; background: none repeat scroll 0 0 #EFEFEF; border-radius: 0.5em 0.5em 0.5em 0.5em; margin-bottom: 1em !important; overflow: hidden; padding: 0.5em 0.5em 0 !important;">
+                                <ul>
+                                    <li class="inbox">
+                                    <u><h1>Liste Projets</h1></u>
+                                    <div id="list-body">
+                                        <table class="sample">
+                                            <thead><tr><th>title</th><th>Sujet</th><th>Specification</th></tr></thead>
+                                            <tbody id="list-body">
+                                                <?php foreach ($this->projects as $project) : ?>
+                                                    <tr>
+                                                        <td><?php echo $this->escape($project->title); ?></td>
+                                                        <td><?php echo $this->escape($project->subject); ?></td>
+                                                        <td><?php echo $this->escape($project->fie_specification); ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                        <div><?= $this->paginationControl($this->projects, $scrollingStyle = null, 'paginators/ajax.phtml', array('jsFunctionName' => 'getList')); ?></div>
+                                    </div>
+                                    </li>
+                                </ul>
+                            </nav></div></div></center></div></div></div></div>
