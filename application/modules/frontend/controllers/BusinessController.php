@@ -23,10 +23,10 @@ class BusinessController extends App_Frontend_Controller {
     }
 
     public function filterAction() {
+        
         $this->_helper->layout('business')->disableLayout();
         $projectModel = new Project();
         $projectReturn = $projectModel->getProject($this->_request->getParams());
-        
         $paginator = Zend_Paginator::factory($projectReturn);
         $paginator->setCurrentPageNumber($this->_request->getParam('page',1))
                  ->setItemCountPerPage(1);
@@ -34,10 +34,24 @@ class BusinessController extends App_Frontend_Controller {
     }
     
     public function projectcreationAction(){
-    
+        
           $this->_helper->layout()->setLayout('business');
+          $categoryProject=new Category();
+          $selectCategories=$categoryProject->getCategory();
+          $this->view->categoryProject = $selectCategories;
+    }
+    public function findskillsAction(){
         
-        
+          $this->_helper->layout()->disableLayout();
+          $skills=new Skills();
+          $selectSkills=$skills->getSkills($this->_request->getParams());
+          $this->view->skillsforcategory=$selectSkills;
+    }
+    public function putskillsAction(){
+         $this->_helper->layout()->disableLayout();
+          $skills=new Skills();
+          $selectSkills=$skills->putSkills($this->_request->getParams());
+          $this->view->putskills=$selectSkills;
     }
 
 }

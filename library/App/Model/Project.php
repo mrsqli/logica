@@ -55,8 +55,44 @@ class Project extends App_Model {
                 ->from(array('P' => $this->_name), array('P.project_id'))
                 ->limit($array_member['limit'])
                 ->where($where);
-
         return $this->fetchAll($select);
     }
-
+ 
+    public function getProject($params){
+//     $where="title ='".$projectName."'";
+ $this->_iniConfig = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV);
+           $select = $this->select()->setIntegrityCheck(false)
+                         ->from($this->_name);
+              
+       if(isset($params['nameProject']) && $params['nameProject']!=''){
+           $select->where('projects.title = ? ',$params['nameProject']) ;
+         }
+         if(isset($params['dateBegin']) && $params['dateBegin']!=''){
+          $dateBegin = new Zend_Date($params['dateBegin'],'dd/MM/yyyy');
+           $paramConvertDateBegin = $dateBegin->toString('yyyy-dd-MM');
+            $select->where('projects.time_create = ? ',$paramConvertDateBegin);
+          }   
+          if(isset($params['dateEnd']) && $params['dateEnd']!=''){
+           $dateEnd = new Zend_Date($params['dateEnd'],'dd/MM/yyyy');
+            $paramConvertDateEnd = $dateEnd->toString('yyyy-MM-dd');
+             $select->where('projects.time_finish = ? ',$paramConvertDateEnd) ;
+          }
+          if(isset($params['budget']) && $params['budget']!=''){
+            $select ->join('reference_values','reference_values.value_id=projects.rv_budget_id')
+                  ->where('reference_values.name = ? ',$params['budget']) ;
+           }
+          if(isset($params['localisation']) && $params['localisation']!='0'){
+           $select ->join('city','city.city_id=projects.city_id')
+                  ->where('city.city_id = ? ',$params['localisation']) ;
+           }
+          if(isset($params['domaine']) && $params['domaine']!='0'){
+           $select->where('projects.rv_domain_id = ? ',$params['domaine']) ;
+         }
+            if(isset($params['statut']) && $params['statut']!=''){
+           $select->where('projects.rv_status_id = ?',$params['statut']) ;
+         }
+//          var_dump($select->__toString());die;
+       return $this->fetchAll($select); 
+        
+       }
 }
